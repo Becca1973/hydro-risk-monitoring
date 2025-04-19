@@ -1,9 +1,9 @@
 name: Fetch data on schedule
 
-on: 
+on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "0 5 * * *"
 
 jobs:
   fetch_air:
@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "3.10"
           cache: poetry
-        
+
       - name: Install dependencies
         run: |
           poetry install --no-interaction --no-root
@@ -34,7 +34,7 @@ jobs:
       - name: Run fetch script
         run: |
           poetry run python src/data/fetch_hidro_data.py
-      
+
       - name: Run pre-process script
         run: |
           poetry run python src/data/preprocess_hidro_data.py
@@ -45,7 +45,7 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git commit -m "Updated raw hidro data on `date` with GitHub Actions"
-        
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
