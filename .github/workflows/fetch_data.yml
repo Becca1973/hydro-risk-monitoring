@@ -44,7 +44,11 @@ jobs:
           git add data
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git commit -m "Updated raw hidro data on `date` with GitHub Actions"
+          git commit -m "Updated raw hidro data on `date` with GitHub Actions" || echo "No changes to commit"
+
+      - name: Pull latest changes
+        run: |
+          git pull --rebase origin main
 
       - name: Push changes
         uses: ad-m/github-push-action@master
@@ -53,6 +57,7 @@ jobs:
 
   fetch_weather:
     name: Fetch and pre-process weather data
+    needs: fetch_hidro
     runs-on: ubuntu-latest
 
     steps:
@@ -89,7 +94,11 @@ jobs:
           git add data
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git commit -m "Updated raw weather data on `date` with GitHub Actions"
+          git commit -m "Updated raw hidro data on `date` with GitHub Actions" || echo "No changes to commit"
+
+      - name: Pull latest changes
+        run: |
+          git pull --rebase origin main
 
       - name: Push changes
         uses: ad-m/github-push-action@master
