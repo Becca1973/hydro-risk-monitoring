@@ -1,6 +1,6 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
 22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,11.9,7.0,72,0,0.0,0,,,0,BLEGOŠ
-22.04.2025 10:20 UTC,22.04.2025 12:20 CEST,11.7,7,73,0,,0,,,0,BLEGOŠ
+22.04.2025 10:20 UTC,22.04.2025 12:20 CEST,11.7,7.0,73,0,,0,,,0,BLEGOŠ
 22.04.2025 7:00 UTC,22.04.2025 9:00 CEST,11.4,6.1,70,0,0.0,0,,,0,BLEGOŠ
 22.04.2025 8:40 UTC,22.04.2025 10:40 CEST,11.2,7.3,77,0,,0,,,0,BLEGOŠ
 22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,11.9,7.4,74,0,0.0,0,,,0,BLEGOŠ
