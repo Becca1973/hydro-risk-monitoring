@@ -46,6 +46,10 @@ jobs:
           git config --local user.name "GitHub Actions"
           git commit -m "Updated raw hidro data on `date` with GitHub Actions"
 
+      - name: Pull with rebase to avoid non-fast-forward
+        run: |
+          git pull --rebase origin main
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
@@ -90,6 +94,10 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git commit -m "Updated raw weather data on `date` with GitHub Actions"
+
+      - name: Pull with rebase to avoid non-fast-forward
+        run: |
+          git pull --rebase origin main
 
       - name: Push changes
         uses: ad-m/github-push-action@master
