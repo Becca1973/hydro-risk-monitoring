@@ -1,5 +1,6 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
-22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,9.2,5.9,80,0,0,0,1.5,53,24,Vogel
+22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,9.2,5.9,80,0,0.0,0,1.5,53,24,Vogel
+22.04.2025 10:20 UTC,22.04.2025 12:20 CEST,9.1,5.8,80,0,,0,0.81,357,24,Vogel
 22.04.2025 7:00 UTC,22.04.2025 9:00 CEST,8.6,3.9,72,0,0.0,0,0.73,15,25,Vogel
 22.04.2025 8:40 UTC,22.04.2025 10:40 CEST,8.2,5.0,80,0,,0,1.79,42,24,Vogel
 22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,8.9,5.5,79,0,0.0,0,2.09,53,24,Vogel
