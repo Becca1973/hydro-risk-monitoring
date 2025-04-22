@@ -1,4 +1,5 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
 22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,20.9,15.7,72,0,0.0,0,2.6,294,,KOPER - LUKA
+22.04.2025 12:00 UTC,22.04.2025 14:00 CEST,21.3,15.7,71,0,0,0,2.8,280,,KOPER - LUKA
 22.04.2025 8:30 UTC,22.04.2025 10:30 CEST,18.9,14.9,78,0,,0,1.8,297,,KOPER - LUKA
 22.04.2025 9:30 UTC,22.04.2025 11:30 CEST,20.5,15.6,74,0,,0,2.0,289,,KOPER - LUKA
