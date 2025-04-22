@@ -1,0 +1,2 @@
+timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
+22.04.2025 8:40 UTC,22.04.2025 10:40 CEST,14.9,8.8,67,0,,0,,,,ZADLOG

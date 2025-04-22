@@ -1,0 +1,2 @@
+timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
+22.04.2025 8:30 UTC,22.04.2025 10:30 CEST,18.6,10.7,60,0,,0,0.9,114,,ŠKOCJAN

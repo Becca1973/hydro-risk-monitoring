@@ -1,2 +1,3 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
-22.04.2025 7:00 UTC,22.04.2025 9:00 CEST,12.4,11.9,97,0,0,0,0.65,210,0,TOLMIN - VOLČE
+22.04.2025 7:00 UTC,22.04.2025 9:00 CEST,12.4,11.9,97,0,0.0,0,0.65,210,0,TOLMIN - VOLČE
+22.04.2025 8:40 UTC,22.04.2025 10:40 CEST,15.7,11.9,78,0,,0,0.81,221,0,TOLMIN - VOLČE
