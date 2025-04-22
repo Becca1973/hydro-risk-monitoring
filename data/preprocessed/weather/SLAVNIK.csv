@@ -1,3 +1,4 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
 22.04.2025 7:00 UTC,22.04.2025 9:00 CEST,13.6,4.8,55,0,0.0,0,3.34,61,0,SLAVNIK
 22.04.2025 8:40 UTC,22.04.2025 10:40 CEST,14.8,6.6,58,0,,0,4.55,96,0,SLAVNIK
+22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,14.9,6.5,57,0,0,0,4.62,78,0,SLAVNIK
