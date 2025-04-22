@@ -1,4 +1,5 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
 22.04.2025 7:00 UTC,22.04.2025 9:00 CEST,12.7,10.2,85,0,0.0,0,,,0,LOGATEC
 22.04.2025 8:40 UTC,22.04.2025 10:40 CEST,17.0,10.4,65,0,,0,,,0,LOGATEC
-22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,17.4,11.2,67,0,0,0,,,0,LOGATEC
+22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,17.4,11.2,67,0,0.0,0,,,0,LOGATEC
+22.04.2025 9:40 UTC,22.04.2025 11:40 CEST,17.9,11,64,0,,0,,,0,LOGATEC
