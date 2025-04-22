@@ -1,6 +1,7 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
 22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,17.7,8.6,55,0,0.0,0,,,0,BABNO POLJE
 22.04.2025 10:20 UTC,22.04.2025 12:20 CEST,17.9,8.7,55,0,,0,,,0,BABNO POLJE
+22.04.2025 11:00 UTC,22.04.2025 13:00 CEST,18.1,8.4,53,0,0,0,,,0,BABNO POLJE
 22.04.2025 7:00 UTC,22.04.2025 9:00 CEST,11.4,9.8,90,0,0.0,0,,,0,BABNO POLJE
 22.04.2025 8:40 UTC,22.04.2025 10:40 CEST,16.8,8.5,58,0,,0,,,0,BABNO POLJE
 22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,17.1,9.0,59,0,0.0,0,,,0,BABNO POLJE

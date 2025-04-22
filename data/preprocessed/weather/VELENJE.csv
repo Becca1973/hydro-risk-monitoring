@@ -1,6 +1,7 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
 22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,20.2,10.3,53,0,0.0,0,,,,VELENJE
 22.04.2025 10:20 UTC,22.04.2025 12:20 CEST,20.1,9.7,51,0,,0,,,,VELENJE
+22.04.2025 11:00 UTC,22.04.2025 13:00 CEST,19.7,10.4,55,0,0,0,,,,VELENJE
 22.04.2025 7:00 UTC,22.04.2025 9:00 CEST,17.4,8.8,57,0,0.0,0,,,,VELENJE
 22.04.2025 8:40 UTC,22.04.2025 10:40 CEST,19.6,10.6,56,0,,0,,,,VELENJE
 22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,19.0,10.0,56,0,0.0,0,,,,VELENJE

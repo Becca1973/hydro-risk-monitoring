@@ -1,6 +1,7 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
 22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,18.2,7.0,48,0,0.0,0,,,,HOČKO POHORJE
 22.04.2025 10:20 UTC,22.04.2025 12:20 CEST,18.0,7.1,49,0,,0,,,,HOČKO POHORJE
+22.04.2025 11:00 UTC,22.04.2025 13:00 CEST,17.9,7.9,52,0,0,0,,,,HOČKO POHORJE
 22.04.2025 7:00 UTC,22.04.2025 9:00 CEST,16.5,6.6,52,0,0.0,0,,,,HOČKO POHORJE
 22.04.2025 8:40 UTC,22.04.2025 10:40 CEST,17.8,8.4,54,0,,0,,,,HOČKO POHORJE
 22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,17.8,8.1,53,0,0.0,0,,,,HOČKO POHORJE
