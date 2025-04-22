@@ -1,5 +1,6 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
 22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,19.9,9.3,50,0,0.0,0,3.4,113,,CELJE
-22.04.2025 12:00 UTC,22.04.2025 14:00 CEST,21.9,10,47,0,0,0,3.6,110,,CELJE
+22.04.2025 12:00 UTC,22.04.2025 14:00 CEST,21.9,10.0,47,0,0.0,0,3.6,110,,CELJE
+22.04.2025 13:00 UTC,22.04.2025 15:00 CEST,22.6,9.6,44,0,0,0,2.8,96,,CELJE
 22.04.2025 8:30 UTC,22.04.2025 10:30 CEST,19.0,10.9,59,0,,0,3.1,88,,CELJE
 22.04.2025 9:30 UTC,22.04.2025 11:30 CEST,21.1,10.9,52,0,,0,1.8,91,,CELJE
