@@ -19,3 +19,4 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,18.5,7.6,49,0,0.0,0,,,0,MEŽICA
 22.04.2025 9:40 UTC,22.04.2025 11:40 CEST,18.5,9.6,56,0,,0,,,0,MEŽICA
 23.04.2025 0:40 UTC,23.04.2025 2:40 CEST,12.3,10.2,87,0,,0,,,0,MEŽICA
+23.04.2025 2:10 UTC,23.04.2025 4:10 CEST,11.7,10,89,0,,0,,,0,MEŽICA

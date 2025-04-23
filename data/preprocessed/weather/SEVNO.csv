@@ -19,3 +19,4 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 22.04.2025 9:00 UTC,22.04.2025 11:00 CEST,15.5,10.5,72,0,0.0,0,,,0,SEVNO
 22.04.2025 9:40 UTC,22.04.2025 11:40 CEST,17.4,10.5,64,0,,0,,,0,SEVNO
 23.04.2025 0:40 UTC,23.04.2025 2:40 CEST,15.7,6.7,55,0,,0,,,0,SEVNO
+23.04.2025 2:10 UTC,23.04.2025 4:10 CEST,13.9,7.2,64,0,,0,,,0,SEVNO
