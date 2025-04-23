@@ -1,3 +1,4 @@
 timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,precipitation_1h,precipitation_12h,wind_speed,wind_direction,snow,station
-22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,21.1,14.8,67,0,0,0,2.5,298,,Krško
-22.04.2025 13:00 UTC,22.04.2025 15:00 CEST,24.6,11.8,45,0,0,0,2.8,115,,Krško
+22.04.2025 10:00 UTC,22.04.2025 12:00 CEST,21.1,14.8,67,0,0.0,0,2.5,298,,Krško
+22.04.2025 13:00 UTC,22.04.2025 15:00 CEST,24.6,11.8,45,0,0.0,0,2.8,115,,Krško
+23.04.2025 0:30 UTC,23.04.2025 2:30 CEST,13.4,13.1,98,0,,0,0.7,186,,Krško
