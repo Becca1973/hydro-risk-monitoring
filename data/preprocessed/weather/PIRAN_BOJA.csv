@@ -7,3 +7,4 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 23.04.2025 2:00 UTC,23.04.2025 4:00 CEST,16.2,12.5,79,,,,2.0,177,,PIRAN - BOJA
 23.04.2025 3:00 UTC,23.04.2025 5:00 CEST,18.2,12.6,70,,,,8.4,335,,PIRAN - BOJA
 24.04.2025 3:00 UTC,24.04.2025 5:00 CEST,16.1,10.1,67,,,,1.8,170,,PIRAN - BOJA
+24.04.2025 8:00 UTC,24.04.2025 10:00 CEST,18.5,12.5,68,,,,0.4,133,,PIRAN - BOJA
