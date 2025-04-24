@@ -44,3 +44,4 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 24.04.2025 0:40 UTC,24.04.2025 2:40 CEST,9.1,7.2,88,0,,0,,,0,BLEGOŠ
 24.04.2025 2:10 UTC,24.04.2025 4:10 CEST,8.0,6.9,93,0,,0,,,0,BLEGOŠ
 24.04.2025 3:20 UTC,24.04.2025 5:20 CEST,9.2,7.5,89,0,,0,,,0,BLEGOŠ
+24.04.2025 4:00 UTC,24.04.2025 6:00 CEST,9.2,7.3,88,0,0,0,,,0,BLEGOŠ
