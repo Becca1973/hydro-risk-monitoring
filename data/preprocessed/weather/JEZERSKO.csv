@@ -65,3 +65,4 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 24.04.2025 8:00 UTC,24.04.2025 10:00 CEST,12.9,8.4,74,,,,,,0,JEZERSKO
 24.04.2025 9:00 UTC,24.04.2025 11:00 CEST,11.9,8.2,78,,,,,,0,JEZERSKO
 25.04.2025 0:40 UTC,25.04.2025 2:40 CEST,6.8,6.4,97,,,,,,0,JEZERSKO
+25.04.2025 2:10 UTC,25.04.2025 4:10 CEST,6.5,5.8,95,,,,,,0,JEZERSKO
