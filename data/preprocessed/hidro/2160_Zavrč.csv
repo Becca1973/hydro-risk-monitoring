@@ -84,4 +84,5 @@ sifra,datum,datum_cet,vodostaj,pretok,prvi_vv_pretok,drugi_vv_pretok,tretji_vv_p
 2160,2025-04-25 20:30,2025-04-25 19:30,29,24.9,500.0,1200.0,1500.0,!! brez neg. znacilnih vrednosti !!,13.2
 2160,2025-04-25 21:30,2025-04-25 20:30,28,24.3,500.0,1200.0,1500.0,!! brez neg. znacilnih vrednosti !!,13.1
 2160,2025-04-25 22:30,2025-04-25 21:30,29,24.9,500.0,1200.0,1500.0,!! brez neg. znacilnih vrednosti !!,13.0
-2160,2025-04-25 23:30,2025-04-25 22:30,31,25.9,500.0,1200.0,1500.0,!! brez neg. znacilnih vrednosti !!,13
+2160,2025-04-25 23:30,2025-04-25 22:30,31,25.9,500.0,1200.0,1500.0,!! brez neg. znacilnih vrednosti !!,13.0
+2160,2025-04-26 00:30,2025-04-25 23:30,33,27,500.0,1200.0,1500.0,!! brez neg. znacilnih vrednosti !!,12.9
