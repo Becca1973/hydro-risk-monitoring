@@ -18,3 +18,4 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 24.04.2025 9:00 UTC,24.04.2025 11:00 CEST,18.2,11.5,65,0.0,0.0,0.0,,,,GORIČKO
 25.04.2025 0:30 UTC,25.04.2025 2:30 CEST,9.6,8.9,96,0.69,,3.2,,,,GORIČKO
 25.04.2025 2:00 UTC,25.04.2025 4:00 CEST,9.2,8.5,96,0.16,0.32,5.06,,,,GORIČKO
+25.04.2025 3:00 UTC,25.04.2025 5:00 CEST,8.5,7.8,96,0.17,0.2,5.26,,,,GORIČKO

@@ -66,3 +66,4 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 24.04.2025 9:00 UTC,24.04.2025 11:00 CEST,17.0,9.7,62,0.0,0.0,0.0,,,,JERONIM
 25.04.2025 0:40 UTC,25.04.2025 2:40 CEST,8.3,7.5,95,0.18,,3.08,,,,JERONIM
 25.04.2025 2:10 UTC,25.04.2025 4:10 CEST,7.8,7.2,96,0.17,,6.43,,,,JERONIM
+25.04.2025 3:20 UTC,25.04.2025 5:20 CEST,7.4,6.7,95,0.12,,7.22,,,,JERONIM
