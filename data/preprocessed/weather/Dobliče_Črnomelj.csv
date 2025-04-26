@@ -37,4 +37,5 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 25.04.2025 8:00 UTC,25.04.2025 10:00 CEST,12.0,10.9,93,1.18,2.34,3.08,0.8,142,,Dobliče Črnomelj
 25.04.2025 9:00 UTC,25.04.2025 11:00 CEST,12.8,11.1,90,0.3,1.41,4.49,0.3,116,,Dobliče Črnomelj
 26.04.2025 2:00 UTC,26.04.2025 4:00 CEST,10.9,10.2,95,0.16,0.39,4.21,0.0,0,,Dobliče Črnomelj
-26.04.2025 3:00 UTC,26.04.2025 5:00 CEST,10.9,10.3,96,0.16,0.25,4.46,0,0,,Dobliče Črnomelj
+26.04.2025 3:00 UTC,26.04.2025 5:00 CEST,10.9,10.3,96,0.16,0.25,4.46,0.0,0,,Dobliče Črnomelj
+26.04.2025 4:00 UTC,26.04.2025 6:00 CEST,10.7,10.1,96,0.09,0.28,4.74,0.1,0,,Dobliče Črnomelj

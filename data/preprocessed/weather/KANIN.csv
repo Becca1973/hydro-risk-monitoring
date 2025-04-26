@@ -90,3 +90,4 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 26.04.2025 0:40 UTC,26.04.2025 2:40 CEST,-1.2,-1.5,98,0.0,,1.63,,,199,KANIN
 26.04.2025 2:10 UTC,26.04.2025 4:10 CEST,-1.1,-1.5,97,0.12,,2.36,4.85,196.0,200,KANIN
 26.04.2025 3:10 UTC,26.04.2025 5:10 CEST,-1.1,-1.4,98,0.3,,3.15,,,199,KANIN
+26.04.2025 4:00 UTC,26.04.2025 6:00 CEST,-1.1,-1.4,98,0,0.58,3.43,,,199,KANIN
