@@ -51,4 +51,5 @@ timestamp_utc,timestamp_local,temperature,dew_point,rel_humidity,precipitation,p
 28.04.2025 3:00 UTC,28.04.2025 5:00 CEST,15.1,6.4,56,0.0,0.0,0.0,1.4,44,,Dolenje Ajdovščina
 28.04.2025 4:00 UTC,28.04.2025 6:00 CEST,15.1,6.7,57,0.0,0.0,0.0,2.0,109,,Dolenje Ajdovščina
 28.04.2025 5:00 UTC,28.04.2025 7:00 CEST,15.5,7.1,57,0.0,0.0,0.0,2.2,107,,Dolenje Ajdovščina
-28.04.2025 6:00 UTC,28.04.2025 8:00 CEST,16.1,7.6,57,0,0,0,2,88,,Dolenje Ajdovščina
+28.04.2025 6:00 UTC,28.04.2025 8:00 CEST,16.1,7.6,57,0.0,0.0,0.0,2.0,88,,Dolenje Ajdovščina
+28.04.2025 8:00 UTC,28.04.2025 10:00 CEST,19,8.7,51,0,0,0,2.2,73,,Dolenje Ajdovščina
