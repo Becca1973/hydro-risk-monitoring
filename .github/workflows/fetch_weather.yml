@@ -1,4 +1,4 @@
-name: Fetch hidro data on schedule
+name: Fetch weather data on schedule
 
 on:
   workflow_dispatch:
