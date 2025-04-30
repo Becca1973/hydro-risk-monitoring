@@ -59,10 +59,6 @@ jobs:
           git add data.dvc
           git commit -m "Updated raw hidro data on `date` with GitHub Actions" || echo "No changes to commit"
 
-      - name: Pull latest changes
-        run: |
-          git pull --rebase origin main || echo "Nothing to rebase or already up to date"
-
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
@@ -121,9 +117,6 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add data.dvc
           git commit -m "Updated raw weather data on $(date) with GitHub Actions"
-
-      - name: Pull changes
-        run: git pull origin main || echo "Nothing to pull"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
