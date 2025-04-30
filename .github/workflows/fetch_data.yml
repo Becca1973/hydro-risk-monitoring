@@ -120,7 +120,7 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add data.dvc
-          git commit -m "Updated raw weather data on `date` with GitHub Actions" || echo "No changes to commit"
+          git commit -m "Updated raw weather data on $(date) with GitHub Actions"
 
       - name: Pull latest changes
         run: |
