@@ -52,12 +52,13 @@ jobs:
 
       - name: Commit data changes
         run: |
-          dvc add data
+          dvc add data/raw/hidro/*
+          dvc add data/preprocessed/hidro/*
           dvc push
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add data.dvc
-          git commit -m "Updated raw hidro data on `date` with GitHub Actions" || echo "No changes to commit"
+          git add data/raw/hidro/*.dvc data/preprocessed/hidro/*.dvc
+          git commit -m "Updated raw and preprocessed hidro data on $(date) with GitHub Actions" || echo "No changes to commit"
 
       - name: Pull latest changes
         run: |
@@ -115,12 +116,13 @@ jobs:
 
       - name: Commit data changes
         run: |
-          dvc add data
+          dvc add data/raw/weather/*
+          dvc add data/preprocessed/weather/*
           dvc push
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add data.dvc
-          git commit -m "Updated raw weather data on `date` with GitHub Actions" || echo "No changes to commit"
+          git add data/raw/hidro/*.dvc data/preprocessed/weather/*.dvc
+          git commit -m "Updated raw and preprocessed data weather on $(date) with GitHub Actions" || echo "No changes to commit"
 
       - name: Pull latest changes
         run: |
