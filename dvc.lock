@@ -17,3 +17,165 @@ stages:
       hash: md5
       md5: b175fea83c7f7e4477f9f3162b61f46a
       size: 97673
+  preprocess_hidro:
+    cmd: "poetry run python src/data/preprocess_hidro_data.py\ngit commit -am \"Updated
+      preprocessed hidro data on `date` with DVC pipeline and GitHub workflows\" ||
+      exit 0\ngit push || true\ndvc push || true\n"
+    deps:
+    - path: data/raw/hidro/hidro_data.xml
+      hash: md5
+      md5: b175fea83c7f7e4477f9f3162b61f46a
+      size: 97673
+    - path: src/data/preprocess_hidro_data.py
+      hash: md5
+      md5: ccfc43116efa63358fc4cadf482210b0
+      size: 3155
+    params:
+      params.yaml:
+        stations.hidro_stations:
+        - Ajdovščina
+        - Bezovljak
+        - Bistra
+        - Bišče
+        - Blate
+        - Bodešče
+        - Bokalce
+        - Borl
+        - Borovnica
+        - Branik
+        - Cankova
+        - Celje
+        - Cerknica
+        - Cerkno
+        - Dekani
+        - Dolenjce
+        - Dolenje
+        - Dovže
+        - Dvor
+        - Fužina
+        - Gaberke
+        - Gočova
+        - Gradac
+        - Gradiček
+        - Hasberg
+        - Hodoš
+        - Hotešk
+        - Hrastnik
+        - Ig
+        - Jelovec
+        - Jesenice
+        - Kamin
+        - Kamnik
+        - Kobarid
+        - Kobilje
+        - Kokra
+        - Kranj
+        - Kraše
+        - Kršovec
+        - Kubed
+        - Lajb
+        - Laško
+        - Letuš
+        - Levec
+        - Litija
+        - Livold
+        - Logatec
+        - Loka
+        - Loče
+        - Luče
+        - Makole
+        - Malni
+        - Martjanci
+        - Medlog
+        - Medno
+        - Medvode
+        - Metlika
+        - Miren
+        - Mlačevo
+        - Mlino
+        - Moste
+        - Muta
+        - Nazarje
+        - Neblo
+        - Nevlje
+        - Nuskova
+        - Okroglo
+        - Ovsiše
+        - Perovec
+        - Petanjci
+        - Petrina
+        - Pišine
+        - Podbočje
+        - Podbukovje
+        - Podhom
+        - Podkaštel
+        - Podlehnik
+        - Podnanos
+        - Podrečje
+        - Podroteja
+        - Polana
+        - Polže
+        - Potoki
+        - Preska
+        - Prestranek
+        - Prečna
+        - Prigorica
+        - Pristava
+        - Ptuj
+        - Radovljica
+        - Rakovec
+        - Ranca
+        - Razori
+        - Rašica
+        - Rečica
+        - Rogatec
+        - Ruta
+        - Sodevci
+        - Sodražica
+        - Solkan
+        - Solčava
+        - Soteska
+        - Središče
+        - Stopiče
+        - Suha
+        - Tolmin
+        - Topole
+        - Trnovo
+        - Trpčane
+        - Tržec
+        - Ukanc
+        - Velenje
+        - Verd
+        - Vešter
+        - Videm
+        - Vipava
+        - Vir
+        - Vodiško
+        - Vrhnika
+        - Zagaj
+        - Zagorje
+        - Zalošče
+        - Zamušani
+        - Zarečica
+        - Zavrč
+        - Zminec
+        - Zreče
+        - Čatež
+        - Čentiba
+        - Črna
+        - Črneče
+        - Črnolica
+        - Šalara
+        - Šentjakob
+        - Škocjan
+        - Šoštanj
+        - Žaga
+        - Žebnik
+        - Železniki
+        - Žiri
+    outs:
+    - path: data/preprocessed/hidro
+      hash: md5
+      md5: 52861125030569f80eb2304b494d798e.dir
+      size: 25856
+      nfiles: 95
