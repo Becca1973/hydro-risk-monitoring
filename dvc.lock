@@ -197,3 +197,132 @@ stages:
       hash: md5
       md5: aa339ec2a5c039d22f8f0ad5ce1123f6
       size: 787470
+  preprocess_weather:
+    cmd: "poetry run python src/data/preprocess_weather_data.py\ngit commit -am \"\
+      Updated preprocessed weather data on `date` with DVC pipeline and GitHub workflows\"\
+      \ || true\ngit push || true\ndvc push || true\n"
+    deps:
+    - path: data/raw/weather/weather_data.xml
+      hash: md5
+      md5: aa339ec2a5c039d22f8f0ad5ce1123f6
+      size: 787470
+    - path: src/data/preprocess_weather_data.py
+      hash: md5
+      md5: 07201203273c2d0cdb29112815bc77c3
+      size: 3093
+    params:
+      params.yaml:
+        stations.weather_stations:
+        - BABNO_POLJE
+        - BILJE
+        - BLEGOŠ
+        - BOHINJSKA_ČEŠNJICA
+        - BORŠT_PRI_GORENJI_VASI
+        - BOVEC
+        - BREGINJ
+        - BRNIK_LETALIŠČE
+        - BUKOVSKI_VRH
+        - CELJE
+        - CERKLJE_LETALIŠČE
+        - CERKNIŠKO_JEZERO
+        - DAVČA
+        - DEBELI_RTIČ
+        - Dobliče_Črnomelj
+        - Dolenje_Ajdovščina
+        - GAČNIK
+        - GODNJE
+        - GORIČKO
+        - GORNJI_GRAD
+        - HOČKO_POHORJE
+        - HRASTNIK
+        - IDRIJA_ČISTILNA_NAPRAVA
+        - ILIRSKA_BISTRICA
+        - ISKRBA
+        - JERONIM
+        - JERUZALEM
+        - JEZERSKO
+        - KAMNIŠKA_BISTRICA
+        - KANIN
+        - KOPER
+        - KOPER_KAPETANIJA
+        - KOPER_LUKA
+        - KORENSKO_SEDLO
+        - KOČEVJE
+        - KRANJ
+        - KREDARICA
+        - KRN
+        - KRVAVEC
+        - KUBED
+        - KUM
+        - Krško
+        - LESCE
+        - LISCA
+        - LITIJA
+        - LJUBLJANA_BEŽIGRAD
+        - LJUBLJANA_VIČ
+        - LOGARSKA_DOLINA
+        - LOGATEC
+        - Lendava
+        - MALKOVEC
+        - MARIBOR_LETALIŠČE
+        - MARIBOR_VRBANSKI_PLATO
+        - MARINČA_VAS
+        - METLIKA
+        - MEŽICA
+        - MIKLAVŽ_NA_GORJANCIH
+        - MURSKA_SOBOTA_RAKIČAN
+        - NANOS
+        - NOVA_GORICA
+        - NOVA_VAS_BLOKE
+        - NOVO_MESTO
+        - OSILNICA
+        - OTLICA
+        - PASJA_RAVAN
+        - PAVLIČEVO_SEDLO
+        - PIRAN_BOJA
+        - PLANINA_POD_GOLICO
+        - PODNANOS
+        - PORTOROŽ_LETALIŠČE
+        - POSTOJNA
+        - PREDEL
+        - PTUJ
+        - RADEGUNDA
+        - RATEČE_PLANICA
+        - RATITOVEC
+        - RAVNE_NA_KOROŠKEM
+        - ROGAŠKA_SLATINA
+        - ROGLA
+        - RUDNO_POLJE
+        - SEVNO
+        - SLAVNIK
+        - SLOVENJ_GRADEC
+        - SLOVENSKE_KONJICE
+        - SVIŠČAKI
+        - TATRE
+        - TOLMIN_VOLČE
+        - TOPOL
+        - TRBOVLJE
+        - TREBNJE
+        - TRIJE_KRALJI
+        - TROJANE_LIMOVCE
+        - TRŽAŠKI_ZALIV
+        - URŠLJA_GORA
+        - VEDRIJAN
+        - VELENJE
+        - VELIKE_LAŠČE
+        - VRHNIKA
+        - VRŠIČ
+        - Vogel
+        - ZADLOG
+        - ZELENICA
+        - ZGORNJA_KAPLA
+        - ZGORNJA_RADOVNA
+        - ZGORNJA_sORICA
+        - ŠEBRELJSKI_VRH
+        - ŠKOCJAN
+    outs:
+    - path: data/preprocessed/weather
+      hash: md5
+      md5: 22a9688eca767024d737acdbb1d7d944.dir
+      size: 10372
+      nfiles: 45
