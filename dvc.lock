@@ -179,3 +179,21 @@ stages:
       md5: 52861125030569f80eb2304b494d798e.dir
       size: 25856
       nfiles: 95
+  fetch_weather:
+    cmd: "poetry run python src/data/fetch_weather_data.py\ngit commit -am \"Updated
+      raw weather data on `date` with DVC pipeline and GitHub workflows\" || true\n
+      git push || true\ndvc push || true\n"
+    deps:
+    - path: src/data/fetch_weather_data.py
+      hash: md5
+      md5: a6659b7c24442c0d4a642ba380afb8b7
+      size: 967
+    params:
+      params.yaml:
+        fetch.weather_url: 
+          https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/sl/observationAms_si_latest.xml
+    outs:
+    - path: data/raw/weather/weather_data.xml
+      hash: md5
+      md5: aa339ec2a5c039d22f8f0ad5ce1123f6
+      size: 787470
