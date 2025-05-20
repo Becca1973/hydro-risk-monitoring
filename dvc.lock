@@ -7,8 +7,8 @@ stages:
     deps:
     - path: src/data/fetch_hidro_data.py
       hash: md5
-      md5: 8f82d6cee7b3649f2dfe02f35ca5af5f
-      size: 979
+      md5: 73c54a93d6d122ae33d6aa20a7ebf20d
+      size: 946
     params:
       params.yaml:
         fetch.hidro_url: https://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml
