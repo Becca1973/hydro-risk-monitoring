@@ -28,8 +28,8 @@ stages:
       size: 97673
     - path: src/data/preprocess_hidro_data.py
       hash: md5
-      md5: ccfc43116efa63358fc4cadf482210b0
-      size: 3155
+      md5: 6a2c339aff336a4c5dbc703254ea4599
+      size: 3070
     params:
       params.yaml:
         stations.hidro_stations:
@@ -176,9 +176,9 @@ stages:
     outs:
     - path: data/preprocessed/hidro
       hash: md5
-      md5: 52861125030569f80eb2304b494d798e.dir
-      size: 25856
-      nfiles: 95
+      md5: 0a16991332d3fb654e2533b4c8387895.dir
+      size: 35496
+      nfiles: 147
   fetch_weather:
     cmd: "poetry run python src/data/fetch_weather_data.py\ngit commit -am \"Updated
       raw weather data on `date` with DVC pipeline and GitHub workflows\" || true\n
