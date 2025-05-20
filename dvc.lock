@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  fetch_hidro:
+    cmd: "poetry run python src/data/fetch_hidro_data.py\ngit commit -am \"Updated
+      raw hidro data on `date` with DVC pipeline and GitHub workflows\" || true\n
+      git push || true\ndvc push || true\n"
+    deps:
+    - path: src/data/fetch_hidro_data.py
+      hash: md5
+      md5: 8f82d6cee7b3649f2dfe02f35ca5af5f
+      size: 979
+    params:
+      params.yaml:
+        fetch.hidro_url: https://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml
+    outs:
+    - path: data/raw/hidro/hidro_data.xml
+      hash: md5
+      md5: 4b142df1fbd5a9e2d38cbb3666739777
+      size: 98270
