@@ -2,7 +2,7 @@ stages:
   fetch_hidro:
     cmd: |
       poetry run python src/data/fetch_hidro_data.py
-      git commit -am "Updated raw hidro data on `date` with DVC pipeline and GitHub workflows" || true
+      git commit -am "Updated raw hidro data on `date` with DVC pipeline and GitHub workflows" || exit 0
       git push || true
       dvc push || true
     deps:
@@ -16,7 +16,7 @@ stages:
   preprocess_hidro:
     cmd: |
       poetry run python src/data/preprocess_hidro_data.py
-      git commit -am "Updated preprocessed hidro data on `date` with DVC pipeline and GitHub workflows" || true
+      git commit -am "Updated preprocessed hidro data on `date` with DVC pipeline and GitHub workflows" || exit 0
       git push || true
       dvc push || true
     deps:
