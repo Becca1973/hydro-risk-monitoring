@@ -2,7 +2,7 @@ schema: '2.0'
 stages:
   fetch_hidro:
     cmd: "poetry run python src/data/fetch_hidro_data.py\ngit commit -am \"Updated
-      raw hidro data on `date` with DVC pipeline and GitHub workflows\" || true\n
+      raw hidro data on `date` with DVC pipeline and GitHub workflows\" || exit 0\n
       git push || true\ndvc push || true\n"
     deps:
     - path: src/data/fetch_hidro_data.py
@@ -15,5 +15,5 @@ stages:
     outs:
     - path: data/raw/hidro/hidro_data.xml
       hash: md5
-      md5: 4b142df1fbd5a9e2d38cbb3666739777
-      size: 98270
+      md5: b175fea83c7f7e4477f9f3162b61f46a
+      size: 97673
