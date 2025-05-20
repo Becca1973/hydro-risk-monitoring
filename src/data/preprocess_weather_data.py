@@ -3,9 +3,13 @@ import re
 import pandas as pd
 import numpy as np
 from lxml import etree as ET
+import yaml
 
 
 def preprocess_weather_data():
+    params = yaml.safe_load(open("params.yaml"))
+    weather_stations = params["stations"]["weather_stations"]
+
     # Pot do XML datoteke
     input_path = "data/raw/weather/weather_data.xml"
 
@@ -21,6 +25,11 @@ def preprocess_weather_data():
         # Ključne vrednosti
         station_name_raw = meting.findtext(
             "domain_shortTitle", default="neznano")
+
+        # Preskoči, če postaja ni med dovoljenimi
+        if station_name_raw not in weather_stations:
+            continue
+
         station_name = re.sub(r"[^\wšđžčćŠĐŽČĆ]+", "_",
                               station_name_raw, flags=re.UNICODE)
         timestamp = meting.findtext("valid_UTC", default="")
@@ -32,7 +41,7 @@ def preprocess_weather_data():
             "temperature": meting.findtext("t", default=""),
             "dew_point": meting.findtext("td", default=""),
             "rel_humidity": meting.findtext("rh", default=""),
-            "precipitation": meting.findtext("rr_val", default=""),  # če je še v uporabi
+            "precipitation": meting.findtext("rr_val", default=""),
             "precipitation_1h": meting.findtext("tp_1h_acc", default=""),
             "precipitation_12h": meting.findtext("tp_12h_acc", default=""),
             "wind_speed": meting.findtext("ff_val", default=""),

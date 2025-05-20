@@ -3,9 +3,13 @@ import re
 import pandas as pd
 import numpy as np
 from lxml import etree as ET
+import yaml
 
 
 def preprocess_hidro_data():
+    params = yaml.safe_load(open("params.yaml"))
+    hidro_stations = params["stations"]["hidro_stations"]
+
     # Odpri XML datoteko
     with open("data/raw/hidro/hidro_data.xml", "rb") as file:
         tree = ET.parse(file)
@@ -26,6 +30,10 @@ def preprocess_hidro_data():
         sifra = postaja.get("sifra", "neznano")
         merilno_mesto_raw = postaja.findtext(
             "merilno_mesto", default="neznano")
+
+        # Preskoči, če postaja ni med dovoljenimi
+        if merilno_mesto_raw not in hidro_stations:
+            continue
 
         # Očisti ime datoteke (zamenja posebne znake, ne pa šumnikov)
         merilno_mesto = re.sub(r"[^\wšđžčćŠĐŽČĆ]+",

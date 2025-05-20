@@ -1,12 +1,15 @@
 import requests
 from datetime import datetime
 import xml.etree.ElementTree as ET
+import yaml
 
 
 def fetch_hidro_data():
+
+    params = yaml.safe_load(open("params.yaml"))["fetch"]
     try:
         # URL to fetch the XML data
-        url = "https://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml"
+        url = params["hidro_url"]
 
         # Fetch the XML data
         response = requests.get(url)

@@ -1,0 +1,58 @@
+stages:
+  fetch_hidro:
+    cmd: |
+      poetry run python src/data/fetch_hidro_data.py
+      git commit -am "Updated raw hidro data on `date` with DVC pipeline and GitHub workflows" || true
+      git push || true
+      dvc push || true
+    deps:
+      - src/data/fetch_hidro_data.py
+    params:
+      - fetch.hidro_url
+    outs:
+      - data/raw/hidro/hidro_data.xml
+    always_changed: true
+
+  preprocess_hidro:
+    cmd: |
+      poetry run python src/data/preprocess_hidro_data.py
+      git commit -am "Updated preprocessed hidro data on `date` with DVC pipeline and GitHub workflows" || true
+      git push || true
+      dvc push || true
+    deps:
+      - src/data/preprocess_hidro_data.py
+      - data/raw/hidro/hidro_data.xml
+    params:
+      - stations.hidro_stations
+    outs:
+      - data/preprocessed/hidro:
+          persist: true
+
+  fetch_weather:
+    cmd: |
+      poetry run python src/data/fetch_weather_data.py
+      git commit -am "Updated raw weather data on `date` with DVC pipeline and GitHub workflows" || true
+      git push || true
+      dvc push || true
+    deps:
+      - src/data/fetch_weather_data.py
+    params:
+      - fetch.weather_url
+    outs:
+      - data/raw/weather/weather_data.xml
+    always_changed: true
+
+  preprocess_weather:
+    cmd: |
+      poetry run python src/data/preprocess_weather_data.py
+      git commit -am "Updated preprocessed weather data on `date` with DVC pipeline and GitHub workflows" || true
+      git push || true
+      dvc push || true
+    deps:
+      - src/data/preprocess_weather_data.py
+      - data/raw/weather/weather_data.xml
+    params:
+      - stations.weather_stations
+    outs:
+      - data/preprocessed/weather:
+          persist: true

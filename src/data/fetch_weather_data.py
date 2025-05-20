@@ -1,12 +1,15 @@
 import requests
 from datetime import datetime
 import os
+import yaml
 
 
 def fetch_weather_data():
+
+    params = yaml.safe_load(open("params.yaml"))["fetch"]
     try:
         # URL za pridobivanje XML podatkov o vremenu
-        url = "https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/sl/observationAms_si_latest.xml"
+        url = params["weather_url"]
 
         # Pridobimo podatke
         response = requests.get(url)

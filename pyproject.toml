@@ -13,6 +13,7 @@ scikit-learn = "^1.6.1"
 lxml = "^5.3.2"
 requests = "^2.32.3"
 dvc = {extras = ["s3"], version = "^3.59.1"}
+pyyaml = "^6.0.2"
 
 
 [build-system]
