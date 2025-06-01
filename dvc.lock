@@ -195,8 +195,8 @@ stages:
     outs:
     - path: data/raw/weather/weather_data.xml
       hash: md5
-      md5: f492195ab1550f88750c8c990c4bdc51
-      size: 824987
+      md5: c6f66f5d11417943e9f8cecb6e09e364
+      size: 709182
   preprocess_weather:
     cmd: "poetry run python src/data/preprocess_weather_data.py\ngit commit -am \"\
       Updated preprocessed weather data on `date` with DVC pipeline and GitHub workflows\"\
