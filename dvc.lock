@@ -195,7 +195,7 @@ stages:
     outs:
     - path: data/raw/weather/weather_data.xml
       hash: md5
-      md5: 92fc823d05907b29bf66eee70618122f
+      md5: 4cc8fcd35eeb4c02f29b4929e034bf7e
       size: 827329
   preprocess_weather:
     cmd: "poetry run python src/data/preprocess_weather_data.py\ngit commit -am \"\
