@@ -204,8 +204,8 @@ stages:
     deps:
     - path: data/raw/weather/weather_data.xml
       hash: md5
-      md5: 333e7d342c2b36bfedf415a3974c26f5
-      size: 825284
+      md5: 2b90580ea5efea442fb1b5b6c62c139f
+      size: 824242
     - path: src/data/preprocess_weather_data.py
       hash: md5
       md5: b02a4b19fbbf9f61747746248991ec4d
@@ -323,6 +323,6 @@ stages:
     outs:
     - path: data/preprocessed/weather
       hash: md5
-      md5: d740c622a170b9c2aadfd90f935cf5df.dir
-      size: 2329716
+      md5: 97a5590359f3216d4d7a73ca62e0e6ff.dir
+      size: 2334039
       nfiles: 57
