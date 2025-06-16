@@ -15,8 +15,8 @@ stages:
     outs:
     - path: data/raw/hidro/hidro_data.xml
       hash: md5
-      md5: 005ebc7b5009dac0775853c201f22548
-      size: 98293
+      md5: 9b4694886945d836c6661d6b8c1e4f56
+      size: 98338
   preprocess_hidro:
     cmd: "poetry run python src/data/preprocess_hidro_data.py\ngit commit -am \"Updated
       preprocessed hidro data on `date` with DVC pipeline and GitHub workflows\" ||
