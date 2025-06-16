@@ -15,7 +15,7 @@ stages:
     outs:
     - path: data/raw/hidro/hidro_data.xml
       hash: md5
-      md5: a4b85775ac90e5a0013e1ea762fee24e
+      md5: d4731a7ac1976e4d0f58701a5ca3d45d
       size: 97679
   preprocess_hidro:
     cmd: "poetry run python src/data/preprocess_hidro_data.py\ngit commit -am \"Updated
