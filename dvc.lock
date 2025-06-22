@@ -24,8 +24,8 @@ stages:
     deps:
     - path: data/raw/hidro/hidro_data.xml
       hash: md5
-      md5: 22722c35883b338da6882fca8aebf435
-      size: 97235
+      md5: 923f120f0780b2938555cabef82acb3c
+      size: 97294
     - path: src/data/preprocess_hidro_data.py
       hash: md5
       md5: 6a2c339aff336a4c5dbc703254ea4599
@@ -176,8 +176,8 @@ stages:
     outs:
     - path: data/preprocessed/hidro
       hash: md5
-      md5: 7b480d065b065b3caf03cf849180d8de.dir
-      size: 10998966
+      md5: 255e74f1b7f203e4177ea3baba546c22.dir
+      size: 11010514
       nfiles: 147
   fetch_weather:
     cmd: "poetry run python src/data/fetch_weather_data.py\ngit commit -am \"Updated
