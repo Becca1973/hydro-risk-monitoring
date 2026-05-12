@@ -186,8 +186,8 @@ stages:
     deps:
     - path: src/data/fetch_weather_data.py
       hash: md5
-      md5: 0c24e13c2f53de40932bb824ff05db62
-      size: 932
+      md5: a6659b7c24442c0d4a642ba380afb8b7
+      size: 967
     params:
       params.yaml:
         fetch.weather_url: 
@@ -195,8 +195,8 @@ stages:
     outs:
     - path: data/raw/weather/weather_data.xml
       hash: md5
-      md5: 830b7ecad4fd2c774a4bfc702277ad09
-      size: 793318
+      md5: d3a1fa3232b3cd1afd6827a893d2aa36
+      size: 802531
   preprocess_weather:
     cmd: "poetry run python src/data/preprocess_weather_data.py\ngit commit -am \"\
       Updated preprocessed weather data on `date` with DVC pipeline and GitHub workflows\"\
