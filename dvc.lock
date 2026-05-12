@@ -2,21 +2,22 @@ schema: '2.0'
 stages:
   fetch_hidro:
     cmd: "poetry run python src/data/fetch_hidro_data.py\ngit commit -am \"Updated
-      raw hidro data on `date` with DVC pipeline and GitHub workflows\" || exit 0\n
+      raw hidro data on `date` with DVC pipeline and GitHub workflows\" || exit 0\n\
       git push || true\ndvc push || true\n"
     deps:
     - path: src/data/fetch_hidro_data.py
       hash: md5
-      md5: 8f82d6cee7b3649f2dfe02f35ca5af5f
-      size: 979
+      md5: 73c54a93d6d122ae33d6aa20a7ebf20d
+      size: 946
     params:
       params.yaml:
-        fetch.hidro_url: https://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml
+        fetch.hidro_url: 
+          https://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml
     outs:
     - path: data/raw/hidro/hidro_data.xml
       hash: md5
-      md5: e00603692153d9c2a397b66aa9cad886
-      size: 99023
+      md5: 555ee4732efe7a1e7e36267ed9d4bb07
+      size: 97604
   preprocess_hidro:
     cmd: "poetry run python src/data/preprocess_hidro_data.py\ngit commit -am \"Updated
       preprocessed hidro data on `date` with DVC pipeline and GitHub workflows\" ||
@@ -24,12 +25,12 @@ stages:
     deps:
     - path: data/raw/hidro/hidro_data.xml
       hash: md5
-      md5: e00603692153d9c2a397b66aa9cad886
-      size: 99023
+      md5: 555ee4732efe7a1e7e36267ed9d4bb07
+      size: 97604
     - path: src/data/preprocess_hidro_data.py
       hash: md5
-      md5: ccfc43116efa63358fc4cadf482210b0
-      size: 3155
+      md5: 6a2c339aff336a4c5dbc703254ea4599
+      size: 3070
     params:
       params.yaml:
         stations.hidro_stations:
@@ -176,18 +177,18 @@ stages:
     outs:
     - path: data/preprocessed/hidro
       hash: md5
-      md5: a59849b997d3a2bfe0d4704017680d44.dir
-      size: 33456
-      nfiles: 95
+      md5: 7f9c43c7e6d0167d59f225ec25271657.dir
+      size: 19939034
+      nfiles: 147
   fetch_weather:
     cmd: "poetry run python src/data/fetch_weather_data.py\ngit commit -am \"Updated
-      raw weather data on `date` with DVC pipeline and GitHub workflows\" || true\n
+      raw weather data on `date` with DVC pipeline and GitHub workflows\" || true\n\
       git push || true\ndvc push || true\n"
     deps:
     - path: src/data/fetch_weather_data.py
       hash: md5
-      md5: a6659b7c24442c0d4a642ba380afb8b7
-      size: 967
+      md5: 0c24e13c2f53de40932bb824ff05db62
+      size: 932
     params:
       params.yaml:
         fetch.weather_url: 
@@ -195,8 +196,8 @@ stages:
     outs:
     - path: data/raw/weather/weather_data.xml
       hash: md5
-      md5: d3a1fa3232b3cd1afd6827a893d2aa36
-      size: 802531
+      md5: 830b7ecad4fd2c774a4bfc702277ad09
+      size: 793318
   preprocess_weather:
     cmd: "poetry run python src/data/preprocess_weather_data.py\ngit commit -am \"\
       Updated preprocessed weather data on `date` with DVC pipeline and GitHub workflows\"\
