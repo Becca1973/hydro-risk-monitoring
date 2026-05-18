@@ -56,3 +56,16 @@ stages:
     outs:
       - data/preprocessed/weather:
           persist: true
+
+  validate_data:
+    cmd: poetry run python gx/run_checkpoint.py
+    deps:
+      - data/preprocessed/hidro
+      - data/preprocessed/weather
+      - gx/run_checkpoint.py
+      - gx/expectations/hidro_suite.json
+      - gx/expectations/weather_suite.json
+      - gx/great_expectations.yml
+    outs:
+      - gx/uncommitted/data_docs:
+          persist: true

@@ -1,0 +1,763 @@
+# Welcome to Great Expectations! Always know what to expect from your data.
+#
+# Here you can define datasources, batch kwargs generators, integrations and
+# more. This file is intended to be committed to your repo. For help with
+# configuration please:
+#   - Read our docs: https://docs.greatexpectations.io/docs/guides/connecting_to_your_data/connect_to_data_overview/#2-configure-your-datasource
+#   - Join our slack channel: http://greatexpectations.io/slack
+
+# config_version refers to the syntactic version of this config file, and is used in maintaining backwards compatibility
+# It is auto-generated and usually does not need to be changed.
+config_version: 3.0
+
+# Datasources tell Great Expectations where your data lives and how to get it.
+# Read more at https://docs.greatexpectations.io/docs/guides/connecting_to_your_data/connect_to_data_overview
+datasources:
+  hidro_datasource:
+    class_name: Datasource
+    module_name: great_expectations.datasource
+    execution_engine:
+      class_name: PandasExecutionEngine
+      module_name: great_expectations.execution_engine
+    data_connectors:
+      default_inferred_data_connector_name:
+        name: default_inferred_data_connector_name
+        class_name: InferredAssetFilesystemDataConnector
+        module_name: great_expectations.datasource.data_connector
+        base_directory: ..\data\preprocessed\hidro
+        default_regex:
+          group_names:
+            - data_asset_name
+          pattern: (.*)
+      default_runtime_data_connector_name:
+        name: default_runtime_data_connector_name
+        class_name: RuntimeDataConnector
+        module_name: great_expectations.datasource.data_connector
+        assets:
+          my_runtime_asset_name:
+            class_name: Asset
+            module_name: great_expectations.datasource.data_connector.asset
+            batch_identifiers:
+              - runtime_batch_identifier_name
+  weather_datasource:
+    class_name: Datasource
+    module_name: great_expectations.datasource
+    execution_engine:
+      class_name: PandasExecutionEngine
+      module_name: great_expectations.execution_engine
+    data_connectors:
+      default_inferred_data_connector_name:
+        name: default_inferred_data_connector_name
+        class_name: InferredAssetFilesystemDataConnector
+        module_name: great_expectations.datasource.data_connector
+        base_directory: ..\data\preprocessed\weather
+        default_regex:
+          group_names:
+            - data_asset_name
+          pattern: (.*)
+      default_runtime_data_connector_name:
+        name: default_runtime_data_connector_name
+        class_name: RuntimeDataConnector
+        module_name: great_expectations.datasource.data_connector
+        assets:
+          my_runtime_asset_name:
+            class_name: Asset
+            module_name: great_expectations.datasource.data_connector.asset
+            batch_identifiers:
+              - runtime_batch_identifier_name
+config_variables_file_path: uncommitted/config_variables.yml
+
+# The plugins_directory will be added to your python path for custom modules
+# used to override and extend Great Expectations.
+plugins_directory: plugins/
+
+stores:
+  # Stores are configurable places to store things like Expectations, Validations
+  # Data Docs, and more. These are for advanced users only - most users can simply
+  # leave this section alone.
+  #
+  # Three stores are required: expectations, validations, and
+  # evaluation_parameters, and must exist with a valid store entry. Additional
+  # stores can be configured for uses such as data_docs, etc.
+  expectations_store:
+    class_name: ExpectationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: expectations/
+
+  validations_store:
+    class_name: ValidationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: uncommitted/validations/
+
+  evaluation_parameter_store:
+    class_name: EvaluationParameterStore
+  checkpoint_store:
+    class_name: CheckpointStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      suppress_store_backend_id: true
+      base_directory: checkpoints/
+
+  profiler_store:
+    class_name: ProfilerStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      suppress_store_backend_id: true
+      base_directory: profilers/
+
+expectations_store_name: expectations_store
+validations_store_name: validations_store
+evaluation_parameter_store_name: evaluation_parameter_store
+checkpoint_store_name: checkpoint_store
+
+data_docs_sites:
+  # Data Docs make it simple to visualize data quality in your project. These
+  # include Expectations, Validations & Profiles. The are built for all
+  # Datasources from JSON artifacts in the local repo including validations &
+  # profiles from the uncommitted directory. Read more at https://docs.greatexpectations.io/docs/terms/data_docs
+  local_site:
+    class_name: SiteBuilder
+    show_how_to_buttons: true
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: uncommitted/data_docs/local_site/
+    site_index_builder:
+      class_name: DefaultSiteIndexBuilder
+
+anonymous_usage_statistics:
+  data_context_id: 2f42085a-7245-4cd7-be0a-e5ea27b7a50a
+  enabled: true
+notebooks:
+include_rendered_content:
+  globally: false
+  expectation_suite: false
+  expectation_validation_result: false
+fluent_datasources:
+  hidro_fluent:
+    type: pandas_filesystem
+    assets:
+      hidro_ptuj:
+        type: csv
+        batching_regex: 2110_Ptuj\.csv
+      hidro_1070_Petanjci:
+        type: csv
+        batching_regex: 1070_Petanjci.csv
+      hidro_1100_Cankova:
+        type: csv
+        batching_regex: 1100_Cankova.csv
+      hidro_1140_Pristava:
+        type: csv
+        batching_regex: 1140_Pristava.csv
+      hidro_1165_Nuskova:
+        type: csv
+        batching_regex: 1165_Nuskova.csv
+      hidro_1220_Polana:
+        type: csv
+        batching_regex: 1220_Polana.csv
+      hidro_1260_Centiba:
+        type: csv
+        batching_regex: 1260_Centiba.csv
+      hidro_1300_Martjanci:
+        type: csv
+        batching_regex: 1300_Martjanci.csv
+      hidro_1312_Kobilje:
+        type: csv
+        batching_regex: 1312_Kobilje.csv
+      hidro_1335_Sredisce:
+        type: csv
+        batching_regex: 1335_Sredisce.csv
+      hidro_1355_Hodos:
+        type: csv
+        batching_regex: 1355_Hodos.csv
+      hidro_2005_Crnece:
+        type: csv
+        batching_regex: 2005_Crnece.csv
+      hidro_2110_Ptuj:
+        type: csv
+        batching_regex: 2110_Ptuj.csv
+      hidro_2150_Borl:
+        type: csv
+        batching_regex: 2150_Borl.csv
+      hidro_2160_Zavrc:
+        type: csv
+        batching_regex: 2160_Zavrc.csv
+      hidro_2220_Crna:
+        type: csv
+        batching_regex: 2220_Crna.csv
+      hidro_2372_Dovze:
+        type: csv
+        batching_regex: 2372_Dovze.csv
+      hidro_2432_Muta:
+        type: csv
+        batching_regex: 2432_Muta.csv
+      hidro_2530_Ruta:
+        type: csv
+        batching_regex: 2530_Ruta.csv
+      hidro_2600_Zrece:
+        type: csv
+        batching_regex: 2600_Zrece.csv
+      hidro_2620_Loce:
+        type: csv
+        batching_regex: 2620_Loce.csv
+      hidro_2640_Makole:
+        type: csv
+        batching_regex: 2640_Makole.csv
+      hidro_2652_Videm:
+        type: csv
+        batching_regex: 2652_Videm.csv
+      hidro_2667_Perovec:
+        type: csv
+        batching_regex: 2667_Perovec.csv
+      hidro_2719_Podlehnik:
+        type: csv
+        batching_regex: 2719_Podlehnik.csv
+      hidro_2754_Trzec:
+        type: csv
+        batching_regex: 2754_Trzec.csv
+      hidro_2830_Ranca:
+        type: csv
+        batching_regex: 2830_Ranca.csv
+      hidro_2880_Gocova:
+        type: csv
+        batching_regex: 2880_Gocova.csv
+      hidro_2900_Zamusani:
+        type: csv
+        batching_regex: 2900_Zamusani.csv
+      hidro_3060_Jesenice:
+        type: csv
+        batching_regex: 3060_Jesenice.csv
+      hidro_3180_Podhom:
+        type: csv
+        batching_regex: 3180_Podhom.csv
+      hidro_3250_Bodesce:
+        type: csv
+        batching_regex: 3250_Bodesce.csv
+      hidro_3260_Ukanc:
+        type: csv
+        batching_regex: 3260_Ukanc.csv
+      hidro_3350_Mlino:
+        type: csv
+        batching_regex: 3350_Mlino.csv
+      hidro_3370_Mlino:
+        type: csv
+        batching_regex: 3370_Mlino.csv
+      hidro_3400_Mlino:
+        type: csv
+        batching_regex: 3400_Mlino.csv
+      hidro_3420_Radovljica:
+        type: csv
+        batching_regex: 3420_Radovljica.csv
+      hidro_3465_Okroglo:
+        type: csv
+        batching_regex: 3465_Okroglo.csv
+      hidro_3530_Medno:
+        type: csv
+        batching_regex: 3530_Medno.csv
+      hidro_3570_Sentjakob:
+        type: csv
+        batching_regex: 3570_Sentjakob.csv
+      hidro_3660_Litija:
+        type: csv
+        batching_regex: 3660_Litija.csv
+      hidro_3725_Hrastnik:
+        type: csv
+        batching_regex: 3725_Hrastnik.csv
+      hidro_3850_Catez:
+        type: csv
+        batching_regex: 3850_Catez.csv
+      hidro_4025_Ovsise:
+        type: csv
+        batching_regex: 4025_Ovsise.csv
+      hidro_4050_Preska:
+        type: csv
+        batching_regex: 4050_Preska.csv
+      hidro_4095_Lajb:
+        type: csv
+        batching_regex: 4095_Lajb.csv
+      hidro_4120_Kokra:
+        type: csv
+        batching_regex: 4120_Kokra.csv
+      hidro_4155_Kranj:
+        type: csv
+        batching_regex: 4155_Kranj.csv
+      hidro_4200_Suha:
+        type: csv
+        batching_regex: 4200_Suha.csv
+      hidro_4209_Medvode:
+        type: csv
+        batching_regex: 4209_Medvode.csv
+      hidro_4222_Ziri:
+        type: csv
+        batching_regex: 4222_Ziri.csv
+      hidro_4230_Zminec:
+        type: csv
+        batching_regex: 4230_Zminec.csv
+      hidro_4270_Zelezniki:
+        type: csv
+        batching_regex: 4270_Zelezniki.csv
+      hidro_4298_Vester:
+        type: csv
+        batching_regex: 4298_Vester.csv
+      hidro_4400_Kamnik:
+        type: csv
+        batching_regex: 4400_Kamnik.csv
+      hidro_4430_Vir:
+        type: csv
+        batching_regex: 4430_Vir.csv
+      hidro_4445_Bisce:
+        type: csv
+        batching_regex: 4445_Bisce.csv
+      hidro_4480_Nevlje:
+        type: csv
+        batching_regex: 4480_Nevlje.csv
+      hidro_4515_Vir:
+        type: csv
+        batching_regex: 4515_Vir.csv
+      hidro_4520_Podrecje:
+        type: csv
+        batching_regex: 4520_Podrecje.csv
+      hidro_4570_Topole:
+        type: csv
+        batching_regex: 4570_Topole.csv
+      hidro_4575_Loka:
+        type: csv
+        batching_regex: 4575_Loka.csv
+      hidro_4626_Zagorje:
+        type: csv
+        batching_regex: 4626_Zagorje.csv
+      hidro_4650_Zebnik:
+        type: csv
+        batching_regex: 4650_Zebnik.csv
+      hidro_4695_Jelovec:
+        type: csv
+        batching_regex: 4695_Jelovec.csv
+      hidro_4710_Rogatec:
+        type: csv
+        batching_regex: 4710_Rogatec.csv
+      hidro_4750_Rakovec:
+        type: csv
+        batching_regex: 4750_Rakovec.csv
+      hidro_4791_Zagaj:
+        type: csv
+        batching_regex: 4791_Zagaj.csv
+      hidro_4820_Petrina:
+        type: csv
+        batching_regex: 4820_Petrina.csv
+      hidro_4828_Sodevci:
+        type: csv
+        batching_regex: 4828_Sodevci.csv
+      hidro_4860_Metlika:
+        type: csv
+        batching_regex: 4860_Metlika.csv
+      hidro_4960_Livold:
+        type: csv
+        batching_regex: 4960_Livold.csv
+      hidro_4969_Gradac:
+        type: csv
+        batching_regex: 4969_Gradac.csv
+      hidro_4986_Dolenjce:
+        type: csv
+        batching_regex: 4986_Dolenjce.csv
+      hidro_5030_Vrhnika:
+        type: csv
+        batching_regex: 5030_Vrhnika.csv
+      hidro_5040_Kamin:
+        type: csv
+        batching_regex: 5040_Kamin.csv
+      hidro_5078_Moste:
+        type: csv
+        batching_regex: 5078_Moste.csv
+      hidro_5240_Verd:
+        type: csv
+        batching_regex: 5240_Verd.csv
+      hidro_5270_Bistra:
+        type: csv
+        batching_regex: 5270_Bistra.csv
+      hidro_5330_Borovnica:
+        type: csv
+        batching_regex: 5330_Borovnica.csv
+      hidro_5440_Ig:
+        type: csv
+        batching_regex: 5440_Ig.csv
+      hidro_5479_Bokalce:
+        type: csv
+        batching_regex: 5479_Bokalce.csv
+      hidro_5500_Dvor:
+        type: csv
+        batching_regex: 5500_Dvor.csv
+      hidro_5540_Razori:
+        type: csv
+        batching_regex: 5540_Razori.csv
+      hidro_5770_Cerknica:
+        type: csv
+        batching_regex: 5770_Cerknica.csv
+      hidro_5800_Prestranek:
+        type: csv
+        batching_regex: 5800_Prestranek.csv
+      hidro_5880_Hasberg:
+        type: csv
+        batching_regex: 5880_Hasberg.csv
+      hidro_5910_Malni:
+        type: csv
+        batching_regex: 5910_Malni.csv
+      hidro_5940_Logatec:
+        type: csv
+        batching_regex: 5940_Logatec.csv
+      hidro_6020_Solcava:
+        type: csv
+        batching_regex: 6020_Solcava.csv
+      hidro_6060_Nazarje:
+        type: csv
+        batching_regex: 6060_Nazarje.csv
+      hidro_6068_Letus:
+        type: csv
+        batching_regex: 6068_Letus.csv
+      hidro_6120_Medlog:
+        type: csv
+        batching_regex: 6120_Medlog.csv
+      hidro_6200_Lasko:
+        type: csv
+        batching_regex: 6200_Lasko.csv
+      hidro_6220_Luce:
+        type: csv
+        batching_regex: 6220_Luce.csv
+      hidro_6240_Krase:
+        type: csv
+        batching_regex: 6240_Krase.csv
+      hidro_6280_Velenje:
+        type: csv
+        batching_regex: 6280_Velenje.csv
+      hidro_6300_Sostanj:
+        type: csv
+        batching_regex: 6300_Sostanj.csv
+      hidro_6340_Recica:
+        type: csv
+        batching_regex: 6340_Recica.csv
+      hidro_6415_Gaberke:
+        type: csv
+        batching_regex: 6415_Gaberke.csv
+      hidro_6630_Levec:
+        type: csv
+        batching_regex: 6630_Levec.csv
+      hidro_6691_Crnolica:
+        type: csv
+        batching_regex: 6691_Crnolica.csv
+      hidro_6720_Celje:
+        type: csv
+        batching_regex: 6720_Celje.csv
+      hidro_6770_Polze:
+        type: csv
+        batching_regex: 6770_Polze.csv
+      hidro_6835_Vodisko:
+        type: csv
+        batching_regex: 6835_Vodisko.csv
+      hidro_7029_Podbukovje:
+        type: csv
+        batching_regex: 7029_Podbukovje.csv
+      hidro_7060_Soteska:
+        type: csv
+        batching_regex: 7060_Soteska.csv
+      hidro_7160_Podbocje:
+        type: csv
+        batching_regex: 7160_Podbocje.csv
+      hidro_7200_Mlacevo:
+        type: csv
+        batching_regex: 7200_Mlacevo.csv
+      hidro_7220_Rasica:
+        type: csv
+        batching_regex: 7220_Rasica.csv
+      hidro_7230_Gradicek:
+        type: csv
+        batching_regex: 7230_Gradicek.csv
+      hidro_7245_Fuzina:
+        type: csv
+        batching_regex: 7245_Fuzina.csv
+      hidro_7340_Precna:
+        type: csv
+        batching_regex: 7340_Precna.csv
+      hidro_7350_Stopice:
+        type: csv
+        batching_regex: 7350_Stopice.csv
+      hidro_7380_Skocjan:
+        type: csv
+        batching_regex: 7380_Skocjan.csv
+      hidro_7440_Sodrazica:
+        type: csv
+        batching_regex: 7440_Sodrazica.csv
+      hidro_7488_Prigorica:
+        type: csv
+        batching_regex: 7488_Prigorica.csv
+      hidro_7498_Blate:
+        type: csv
+        batching_regex: 7498_Blate.csv
+      hidro_8031_Krsovec:
+        type: csv
+        batching_regex: 8031_Krsovec.csv
+      hidro_8080_Kobarid:
+        type: csv
+        batching_regex: 8080_Kobarid.csv
+      hidro_8180_Solkan:
+        type: csv
+        batching_regex: 8180_Solkan.csv
+      hidro_8270_Zaga:
+        type: csv
+        batching_regex: 8270_Zaga.csv
+      hidro_8332_Tolmin:
+        type: csv
+        batching_regex: 8332_Tolmin.csv
+      hidro_8350_Podroteja:
+        type: csv
+        batching_regex: 8350_Podroteja.csv
+      hidro_8351_Podroteja:
+        type: csv
+        batching_regex: 8351_Podroteja.csv
+      hidro_8450_Hotesk:
+        type: csv
+        batching_regex: 8450_Hotesk.csv
+      hidro_8453_Podroteja:
+        type: csv
+        batching_regex: 8453_Podroteja.csv
+      hidro_8454_Cerkno:
+        type: csv
+        batching_regex: 8454_Cerkno.csv
+      hidro_8561_Vipava:
+        type: csv
+        batching_regex: 8561_Vipava.csv
+      hidro_8565_Dolenje:
+        type: csv
+        batching_regex: 8565_Dolenje.csv
+      hidro_8591_Zalosce:
+        type: csv
+        batching_regex: 8591_Zalosce.csv
+      hidro_8601_Miren:
+        type: csv
+        batching_regex: 8601_Miren.csv
+      hidro_8610_Podnanos:
+        type: csv
+        batching_regex: 8610_Podnanos.csv
+      hidro_8630_Ajdovscina:
+        type: csv
+        batching_regex: 8630_Ajdovscina.csv
+      hidro_8640_Branik:
+        type: csv
+        batching_regex: 8640_Branik.csv
+      hidro_8670_Bezovljak:
+        type: csv
+        batching_regex: 8670_Bezovljak.csv
+      hidro_8680_Neblo:
+        type: csv
+        batching_regex: 8680_Neblo.csv
+      hidro_8700_Neblo:
+        type: csv
+        batching_regex: 8700_Neblo.csv
+      hidro_8710_Potoki:
+        type: csv
+        batching_regex: 8710_Potoki.csv
+      hidro_9015_Trpcane:
+        type: csv
+        batching_regex: 9015_Trpcane.csv
+      hidro_9030_Trnovo:
+        type: csv
+        batching_regex: 9030_Trnovo.csv
+      hidro_9077_Skocjan:
+        type: csv
+        batching_regex: 9077_Skocjan.csv
+      hidro_9108_Zarecica:
+        type: csv
+        batching_regex: 9108_Zarecica.csv
+      hidro_9210_Kubed:
+        type: csv
+        batching_regex: 9210_Kubed.csv
+      hidro_9240_Dekani:
+        type: csv
+        batching_regex: 9240_Dekani.csv
+      hidro_9275_Salara:
+        type: csv
+        batching_regex: 9275_Salara.csv
+      hidro_9280_Pisine:
+        type: csv
+        batching_regex: 9280_Pisine.csv
+      hidro_9300_Podkastel:
+        type: csv
+        batching_regex: 9300_Podkastel.csv
+    base_directory: data\preprocessed\hidro
+  weather_fluent:
+    type: pandas_filesystem
+    assets:
+      weather_celje:
+        type: csv
+        batching_regex: CELJE\.csv
+      weather_BILJE:
+        type: csv
+        batching_regex: BILJE.csv
+      weather_BLEGOS:
+        type: csv
+        batching_regex: BLEGOS.csv
+      weather_BOVEC:
+        type: csv
+        batching_regex: BOVEC.csv
+      weather_BREGINJ:
+        type: csv
+        batching_regex: BREGINJ.csv
+      weather_CELJE:
+        type: csv
+        batching_regex: CELJE.csv
+      weather_DAVCA:
+        type: csv
+        batching_regex: DAVCA.csv
+      weather_GACNIK:
+        type: csv
+        batching_regex: GACNIK.csv
+      weather_GODNJE:
+        type: csv
+        batching_regex: GODNJE.csv
+      weather_GORICKO:
+        type: csv
+        batching_regex: GORICKO.csv
+      weather_HRASTNIK:
+        type: csv
+        batching_regex: HRASTNIK.csv
+      weather_ISKRBA:
+        type: csv
+        batching_regex: ISKRBA.csv
+      weather_JERONIM:
+        type: csv
+        batching_regex: JERONIM.csv
+      weather_JERUZALEM:
+        type: csv
+        batching_regex: JERUZALEM.csv
+      weather_JEZERSKO:
+        type: csv
+        batching_regex: JEZERSKO.csv
+      weather_KANIN:
+        type: csv
+        batching_regex: KANIN.csv
+      weather_KOCEVJE:
+        type: csv
+        batching_regex: KOCEVJE.csv
+      weather_KOPER:
+        type: csv
+        batching_regex: KOPER.csv
+      weather_KRANJ:
+        type: csv
+        batching_regex: KRANJ.csv
+      weather_KREDARICA:
+        type: csv
+        batching_regex: KREDARICA.csv
+      weather_KRN:
+        type: csv
+        batching_regex: KRN.csv
+      weather_Krsko:
+        type: csv
+        batching_regex: Krsko.csv
+      weather_KRVAVEC:
+        type: csv
+        batching_regex: KRVAVEC.csv
+      weather_KUBED:
+        type: csv
+        batching_regex: KUBED.csv
+      weather_KUM:
+        type: csv
+        batching_regex: KUM.csv
+      weather_Lendava:
+        type: csv
+        batching_regex: Lendava.csv
+      weather_LESCE:
+        type: csv
+        batching_regex: LESCE.csv
+      weather_LISCA:
+        type: csv
+        batching_regex: LISCA.csv
+      weather_LITIJA:
+        type: csv
+        batching_regex: LITIJA.csv
+      weather_LOGATEC:
+        type: csv
+        batching_regex: LOGATEC.csv
+      weather_MALKOVEC:
+        type: csv
+        batching_regex: MALKOVEC.csv
+      weather_METLIKA:
+        type: csv
+        batching_regex: METLIKA.csv
+      weather_MEZICA:
+        type: csv
+        batching_regex: MEZICA.csv
+      weather_NANOS:
+        type: csv
+        batching_regex: NANOS.csv
+      weather_OSILNICA:
+        type: csv
+        batching_regex: OSILNICA.csv
+      weather_OTLICA:
+        type: csv
+        batching_regex: OTLICA.csv
+      weather_PODNANOS:
+        type: csv
+        batching_regex: PODNANOS.csv
+      weather_POSTOJNA:
+        type: csv
+        batching_regex: POSTOJNA.csv
+      weather_PREDEL:
+        type: csv
+        batching_regex: PREDEL.csv
+      weather_PTUJ:
+        type: csv
+        batching_regex: PTUJ.csv
+      weather_RADEGUNDA:
+        type: csv
+        batching_regex: RADEGUNDA.csv
+      weather_RATITOVEC:
+        type: csv
+        batching_regex: RATITOVEC.csv
+      weather_ROGLA:
+        type: csv
+        batching_regex: ROGLA.csv
+      weather_SEVNO:
+        type: csv
+        batching_regex: SEVNO.csv
+      weather_SKOCJAN:
+        type: csv
+        batching_regex: SKOCJAN.csv
+      weather_SLAVNIK:
+        type: csv
+        batching_regex: SLAVNIK.csv
+      weather_SVISCAKI:
+        type: csv
+        batching_regex: SVISCAKI.csv
+      weather_TATRE:
+        type: csv
+        batching_regex: TATRE.csv
+      weather_TOPOL:
+        type: csv
+        batching_regex: TOPOL.csv
+      weather_TRBOVLJE:
+        type: csv
+        batching_regex: TRBOVLJE.csv
+      weather_TREBNJE:
+        type: csv
+        batching_regex: TREBNJE.csv
+      weather_VEDRIJAN:
+        type: csv
+        batching_regex: VEDRIJAN.csv
+      weather_VELENJE:
+        type: csv
+        batching_regex: VELENJE.csv
+      weather_Vogel:
+        type: csv
+        batching_regex: Vogel.csv
+      weather_VRHNIKA:
+        type: csv
+        batching_regex: VRHNIKA.csv
+      weather_VRSIC:
+        type: csv
+        batching_regex: VRSIC.csv
+      weather_ZADLOG:
+        type: csv
+        batching_regex: ZADLOG.csv
+      weather_ZELENICA:
+        type: csv
+        batching_regex: ZELENICA.csv
+    base_directory: data\preprocessed\weather
