@@ -9,3 +9,6 @@ __pycache__/
 *.dist-info/
 *.log
 /data/
+checkpoints/
+.vscode/
+reports/

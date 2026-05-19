@@ -69,3 +69,17 @@ stages:
     outs:
       - gx/uncommitted/data_docs:
           persist: true
+
+  test_data:
+    cmd: poetry run python src/data/test_data.py
+    deps:
+      - data/preprocessed/hidro
+      - data/preprocessed/weather
+      - src/data/test_data.py
+    outs:
+      - data/reference/hidro:
+          persist: true
+      - data/reference/weather:
+          persist: true
+      - reports/data_testing:
+          persist: true
