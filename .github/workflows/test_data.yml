@@ -26,6 +26,11 @@ jobs:
       - name: Run Evidently tests
         run: poetry run python src/data/test_data.py
 
+      - name: Ensure deploy folder exists
+        run: |
+          mkdir -p reports/data_testing
+          touch reports/data_testing/index.html
+
       - name: Deploy Evidently reports to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
