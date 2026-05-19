@@ -23,13 +23,21 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-interaction --no-root
 
-      - name: Run Evidently tests
+      - name: Create reference datasets
         run: poetry run python src/data/test_data.py
 
-      - name: Ensure deploy folder exists
+      - name: Generate Evidently reports
+        run: poetry run python src/data/test_data.py
+
+      - name: Create Evidently index
         run: |
           mkdir -p reports/data_testing
-          touch reports/data_testing/index.html
+          echo "<h1>Evidently Reports</h1>" > reports/data_testing/index.html
+          for f in reports/data_testing/*.html; do
+            name=$(basename "$f")
+            echo "<p><a href='$name'>$name</a></p>" >> reports/data_testing/index.html
+          done
+          ls -la reports/data_testing
 
       - name: Deploy Evidently reports to Netlify
         uses: nwtgck/actions-netlify@v3.0
