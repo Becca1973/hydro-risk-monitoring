@@ -12,3 +12,5 @@ __pycache__/
 checkpoints/
 .vscode/
 reports/
+!reports/data_testing/
+!reports/data_testing/*.html
