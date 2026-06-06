@@ -83,3 +83,31 @@ stages:
           persist: true
       - reports/data_testing:
           persist: true
+
+  train_hidro:
+    cmd: |
+      poetry run python -m src.model.train_hidro
+      git commit -am "Updated hidro models on `date` with DVC pipeline and GitHub workflows" || true
+      git push || true
+      dvc push || true
+    deps:
+      - src/model/preprocess.py
+      - src/model/train_hidro.py
+      - data/preprocessed/hidro
+      - gx/uncommitted/data_docs
+      - data/reference/hidro
+    params:
+      - train.hidro_input_dir
+      - train.models_output_dir
+      - train.target_col
+      - train.feature_cols
+      - train.window_size
+      - train.test_size
+      - train.epochs
+      - train.batch_size
+      - train.min_rows
+    outs:
+      - models/hidro:
+          persist: true
+      - reports/modeling:
+          persist: true

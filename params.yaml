@@ -252,3 +252,19 @@ stations:
     - ZGORNJA_sORICA
     - ŠEBRELJSKI_VRH
     - ŠKOCJAN
+
+train:
+  hidro_input_dir: "data/preprocessed/hidro"
+  models_output_dir: "models/hidro"
+  target_col: "vodostaj"
+
+  feature_cols:
+    - vodostaj
+    - pretok
+    - temp_vode
+
+  window_size: 24
+  test_size: 48
+  epochs: 20
+  batch_size: 32
+  min_rows: 100

@@ -14,3 +14,5 @@ checkpoints/
 reports/
 !reports/data_testing/
 !reports/data_testing/*.html
+models/hidro/*.keras
+models/hidro/*.pkl
