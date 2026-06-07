@@ -19,6 +19,7 @@ great-expectations = "0.18.21"
 evidently = ">=0.7.1,<0.8.0"
 tensorflow-io-gcs-filesystem = "0.31.0"
 tensorflow = "2.19.0"
+mlflow = "^3.13.0"
 
 
 [build-system]

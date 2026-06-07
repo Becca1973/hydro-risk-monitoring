@@ -3,6 +3,7 @@ import pickle
 import random
 import os
 
+import mlflow
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -39,6 +40,8 @@ def build_model(input_shape):
 def train_station(csv_path: Path, params: dict):
     print(f"\nTraining model for {csv_path.name}")
 
+    station_name = csv_path.stem
+
     df = pd.read_csv(csv_path)
 
     feature_cols = params["feature_cols"]
@@ -52,7 +55,7 @@ def train_station(csv_path: Path, params: dict):
     if missing_cols:
         print(f"Skipping {csv_path.name}, missing columns: {missing_cols}")
         return {
-            "station": csv_path.stem,
+            "station": station_name,
             "status": "skipped",
             "reason": f"missing columns: {missing_cols}",
         }
@@ -70,7 +73,7 @@ def train_station(csv_path: Path, params: dict):
             f"Skipping {csv_path.name}, empty feature columns: {empty_feature_cols}"
         )
         return {
-            "station": csv_path.stem,
+            "station": station_name,
             "status": "skipped",
             "reason": f"empty feature columns: {empty_feature_cols}",
         }
@@ -78,7 +81,7 @@ def train_station(csv_path: Path, params: dict):
     if len(df) < params["min_rows"]:
         print(f"Skipping {csv_path.name}, not enough rows.")
         return {
-            "station": csv_path.stem,
+            "station": station_name,
             "status": "skipped",
             "reason": "not enough rows",
         }
@@ -123,7 +126,7 @@ def train_station(csv_path: Path, params: dict):
     if len(X) <= test_size:
         print(f"Skipping {csv_path.name}, not enough samples after windowing.")
         return {
-            "station": csv_path.stem,
+            "station": station_name,
             "status": "skipped",
             "reason": "not enough samples after windowing",
         }
@@ -142,82 +145,107 @@ def train_station(csv_path: Path, params: dict):
         restore_best_weights=True,
     )
 
-    model = build_model((X_train.shape[1], X_train.shape[2]))
+    # MLflow tracking: vsak model/postaja ima svoj run
+    with mlflow.start_run(run_name=f"hidro_lstm_{station_name}"):
 
-    model.fit(
-        X_train,
-        y_train,
-        validation_split=0.2,
-        epochs=params["epochs"],
-        batch_size=params["batch_size"],
-        callbacks=[early_stopping],
-        verbose=1,
-    )
+        # MLflow tracking: logiranje parametrov
+        mlflow.log_param("station", station_name)
+        mlflow.log_param("target_col", target_col)
+        mlflow.log_param("feature_cols", ",".join(feature_cols))
+        mlflow.log_param("window_size", window_size)
+        mlflow.log_param("test_size", test_size)
+        mlflow.log_param("epochs", params["epochs"])
+        mlflow.log_param("batch_size", params["batch_size"])
+        mlflow.log_param("min_rows", params["min_rows"])
+        mlflow.log_param("num_rows", len(df))
+        mlflow.log_param("num_samples", len(X))
 
-    predictions = model.predict(X_test).flatten()
+        model = build_model((X_train.shape[1], X_train.shape[2]))
 
-    test_mae = mean_absolute_error(y_test, predictions)
-    test_mse = mean_squared_error(y_test, predictions)
-    test_rmse = np.sqrt(test_mse)
+        model.fit(
+            X_train,
+            y_train,
+            validation_split=0.2,
+            epochs=params["epochs"],
+            batch_size=params["batch_size"],
+            callbacks=[early_stopping],
+            verbose=1,
+        )
 
-    print(f"Test MAE: {test_mae:.4f}")
-    print(f"Test MSE: {test_mse:.4f}")
-    print(f"Test RMSE: {test_rmse:.4f}")
+        predictions = model.predict(X_test).flatten()
 
-    # Train final model on the full dataset, similarly to professor's example
-    final_model = build_model((X.shape[1], X.shape[2]))
+        test_mae = mean_absolute_error(y_test, predictions)
+        test_mse = mean_squared_error(y_test, predictions)
+        test_rmse = np.sqrt(test_mse)
 
-    final_model.fit(
-        X,
-        y,
-        validation_split=0.2,
-        epochs=params["epochs"],
-        batch_size=params["batch_size"],
-        callbacks=[early_stopping],
-        verbose=1,
-    )
+        print(f"Test MAE: {test_mae:.4f}")
+        print(f"Test MSE: {test_mse:.4f}")
+        print(f"Test RMSE: {test_rmse:.4f}")
 
-    full_predictions = final_model.predict(X).flatten()
+        # Train final model on the full dataset, similarly to professor's example
+        final_model = build_model((X.shape[1], X.shape[2]))
 
-    full_mae = mean_absolute_error(y, full_predictions)
-    full_mse = mean_squared_error(y, full_predictions)
-    full_rmse = np.sqrt(full_mse)
+        final_model.fit(
+            X,
+            y,
+            validation_split=0.2,
+            epochs=params["epochs"],
+            batch_size=params["batch_size"],
+            callbacks=[early_stopping],
+            verbose=1,
+        )
 
-    print(f"Full dataset MAE: {full_mae:.4f}")
-    print(f"Full dataset MSE: {full_mse:.4f}")
-    print(f"Full dataset RMSE: {full_rmse:.4f}")
+        full_predictions = final_model.predict(X).flatten()
 
-    output_dir = Path(params["models_output_dir"])
-    output_dir.mkdir(parents=True, exist_ok=True)
+        full_mae = mean_absolute_error(y, full_predictions)
+        full_mse = mean_squared_error(y, full_predictions)
+        full_rmse = np.sqrt(full_mse)
 
-    station_name = csv_path.stem
+        print(f"Full dataset MAE: {full_mae:.4f}")
+        print(f"Full dataset MSE: {full_mse:.4f}")
+        print(f"Full dataset RMSE: {full_rmse:.4f}")
 
-    model_path = output_dir / f"model_{station_name}.keras"
-    pipeline_path = output_dir / f"pipeline_{station_name}.pkl"
+        # MLflow tracking: logiranje metrik
+        mlflow.log_metric("test_mae", test_mae)
+        mlflow.log_metric("test_mse", test_mse)
+        mlflow.log_metric("test_rmse", test_rmse)
+        mlflow.log_metric("full_mae", full_mae)
+        mlflow.log_metric("full_mse", full_mse)
+        mlflow.log_metric("full_rmse", full_rmse)
 
-    final_model.save(model_path)
+        output_dir = Path(params["models_output_dir"])
+        output_dir.mkdir(parents=True, exist_ok=True)
 
-    with open(pipeline_path, "wb") as f:
-        pickle.dump(preprocessing_pipeline, f)
+        model_path = output_dir / f"model_{station_name}.keras"
+        pipeline_path = output_dir / f"pipeline_{station_name}.pkl"
 
-    print(f"Saved model to {model_path}")
-    print(f"Saved pipeline to {pipeline_path}")
+        final_model.save(model_path)
 
-    return {
-        "station": station_name,
-        "status": "trained",
-        "reason": "",
-        "test_mae": test_mae,
-        "test_mse": test_mse,
-        "test_rmse": test_rmse,
-        "full_mae": full_mae,
-        "full_mse": full_mse,
-        "full_rmse": full_rmse,
-        "model_path": str(model_path),
-        "pipeline_path": str(pipeline_path),
-        "num_rows": len(df),
-        "num_samples": len(X),
-    }
+        with open(pipeline_path, "wb") as f:
+            pickle.dump(preprocessing_pipeline, f)
+
+        print(f"Saved model to {model_path}")
+        print(f"Saved pipeline to {pipeline_path}")
+
+        # MLflow tracking: logiranje artefaktov
+        mlflow.log_artifact(str(model_path), artifact_path="model")
+        mlflow.log_artifact(str(pipeline_path), artifact_path="pipeline")
+
+        return {
+            "station": station_name,
+            "status": "trained",
+            "reason": "",
+            "test_mae": test_mae,
+            "test_mse": test_mse,
+            "test_rmse": test_rmse,
+            "full_mae": full_mae,
+            "full_mse": full_mse,
+            "full_rmse": full_rmse,
+            "model_path": str(model_path),
+            "pipeline_path": str(pipeline_path),
+            "num_rows": len(df),
+            "num_samples": len(X),
+        }
 
 
 def main():
@@ -232,6 +260,13 @@ def main():
     random.seed(random_state)
     np.random.seed(random_state)
     tf.random.set_seed(random_state)
+
+    # MLflow tracking: ime eksperimenta
+
+    # Local station-by-station training is kept for development purposes.
+    # It is disabled for remote MLflow tracking to avoid creating too many runs.
+    mlflow.set_tracking_uri("file:./mlruns")
+    mlflow.set_experiment("hidro-water-level-forecasting-local")
 
     input_dir = Path(train_params["hidro_input_dir"])
 
@@ -248,6 +283,9 @@ def main():
     metrics_path = metrics_dir / "hidro_model_metrics.csv"
 
     pd.DataFrame(results).to_csv(metrics_path, index=False)
+
+    # MLflow tracking: shrani skupni CSV z metrikami
+    mlflow.log_artifact(str(metrics_path), artifact_path="reports")
 
     print(f"\nSaved metrics to {metrics_path}")
 

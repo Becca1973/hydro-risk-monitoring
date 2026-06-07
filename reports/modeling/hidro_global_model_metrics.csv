@@ -1,0 +1,2 @@
+model,status,test_mae,test_mse,test_rmse,full_mae,full_mse,full_rmse,model_path,pipeline_path,num_rows,num_stations,num_train_samples,num_test_samples
+hidro_global_water_level_forecaster,trained,0.0008447218120181911,7.611646965459516e-06,0.00275892134093372,0.0011688169698214094,1.1748674261851598e-05,0.0034276339159617962,models\hidro_global\model_hidro_global.keras,models\hidro_global\pipeline_hidro_global.pkl,200572,125,191572,6000

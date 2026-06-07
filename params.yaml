@@ -256,6 +256,7 @@ stations:
 train:
   hidro_input_dir: "data/preprocessed/hidro"
   models_output_dir: "models/hidro"
+  global_models_output_dir: "models/hidro_global"
   target_col: "vodostaj"
 
   feature_cols:
