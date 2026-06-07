@@ -257,6 +257,8 @@ train:
   hidro_input_dir: "data/preprocessed/hidro"
   models_output_dir: "models/hidro"
   global_models_output_dir: "models/hidro_global"
+  weather_input_dir: "data/preprocessed/weather"
+  risk_models_output_dir: "models/risk"
   target_col: "vodostaj"
 
   feature_cols:

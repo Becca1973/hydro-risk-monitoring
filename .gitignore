@@ -24,5 +24,8 @@ reports/*
 models/hidro_global/*.keras
 models/hidro_global/*.pkl
 
+models/risk/*.keras
+models/risk/*.pkl
+
 mlruns/
 mlflow.db
