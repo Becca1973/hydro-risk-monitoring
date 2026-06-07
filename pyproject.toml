@@ -6,7 +6,7 @@ authors = ["rebekacep <rebeka.cep@student.um.si>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.12"
+python = ">=3.11,<3.12"
 numpy = "1.26.4"
 pandas = "^2.2.3"
 scikit-learn = "^1.6.1"
@@ -20,6 +20,9 @@ evidently = ">=0.7.1,<0.8.0"
 tensorflow-io-gcs-filesystem = "0.31.0"
 tensorflow = "2.19.0"
 mlflow = "^3.13.0"
+tf2onnx = "^1.17.0"
+onnx = "^1.21.0"
+onnxruntime = "^1.26.0"
 
 
 [build-system]
