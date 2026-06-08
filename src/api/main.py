@@ -7,6 +7,7 @@ import tensorflow as tf
 from fastapi import FastAPI, HTTPException
 
 app = FastAPI(title="Hydro Risk Monitoring API")
+STATIONS_PATH = Path("data/metadata/hidro_stations.csv")
 
 HIDRO_DIR = Path("data/preprocessed/hidro")
 WEATHER_DIR = Path("data/preprocessed/weather")
@@ -75,8 +76,10 @@ def health():
 
 @app.get("/stations")
 def stations():
-    station_names = sorted([path.stem for path in HIDRO_DIR.glob("*.csv")])
-    return {"stations": station_names}
+    df = pd.read_csv(STATIONS_PATH)
+    return {
+        "stations": sorted(df["station"].tolist())
+    }
 
 
 @app.get("/models")
@@ -324,7 +327,13 @@ def stations_map():
         )
 
     coordinates = pd.read_csv(COORDINATES_PATH)
-    available_stations = set([path.stem for path in HIDRO_DIR.glob("*.csv")])
+
+    if STATIONS_PATH.exists():
+        stations_df = pd.read_csv(STATIONS_PATH)
+        available_stations = set(stations_df["station"].dropna().tolist())
+    else:
+        available_stations = set(
+            [path.stem for path in HIDRO_DIR.glob("*.csv")])
 
     coordinates = coordinates[
         coordinates["station"].isin(available_stations)
