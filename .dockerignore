@@ -1,10 +1,13 @@
 .git
-.dvc
+.dvc/cache
 .vscode
 __pycache__
 *.pyc
 
-data
+data/*
+!data/metadata/
+!data/metadata/*.csv
+
 models
 mlruns
 mlflow.db
