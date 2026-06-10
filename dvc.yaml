@@ -109,8 +109,6 @@ stages:
     outs:
       - models/hidro_global:
           persist: true
-      - reports/modeling:
-          persist: true
 
   train_risk_classifier:
     cmd: |
@@ -134,8 +132,6 @@ stages:
       - train.min_rows
     outs:
       - models/risk:
-          persist: true
-      - reports/modeling:
           persist: true
 
   export_onnx:

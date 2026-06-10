@@ -2,7 +2,7 @@ schema: '2.0'
 stages:
   fetch_hidro:
     cmd: "poetry run python src/data/fetch_hidro_data.py\ngit commit -am \"Updated
-      raw hidro data on `date` with DVC pipeline and GitHub workflows\" || exit 0\n\
+      raw hidro data on `date` with DVC pipeline and GitHub workflows\" || exit 0\n
       git push || true\ndvc push || true\n"
     deps:
     - path: src/data/fetch_hidro_data.py
@@ -11,8 +11,7 @@ stages:
       size: 946
     params:
       params.yaml:
-        fetch.hidro_url: 
-          https://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml
+        fetch.hidro_url: https://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml
     outs:
     - path: data/raw/hidro/hidro_data.xml
       hash: md5
@@ -182,7 +181,7 @@ stages:
       nfiles: 147
   fetch_weather:
     cmd: "poetry run python src/data/fetch_weather_data.py\ngit commit -am \"Updated
-      raw weather data on `date` with DVC pipeline and GitHub workflows\" || true\n\
+      raw weather data on `date` with DVC pipeline and GitHub workflows\" || true\n
       git push || true\ndvc push || true\n"
     deps:
     - path: src/data/fetch_weather_data.py
@@ -327,3 +326,191 @@ stages:
       md5: 02bd4a22c7dba0d942f5dd6189d529c7.dir
       size: 10659218
       nfiles: 57
+  validate_data:
+    cmd: poetry run python gx/run_checkpoint.py
+    deps:
+    - path: data/preprocessed/hidro
+      hash: md5
+      md5: d09d5c2e4355d9be1ae3aad6e739d333.dir
+      size: 19939034
+      nfiles: 147
+    - path: data/preprocessed/weather
+      hash: md5
+      md5: aedf693be370a18d5d9822a2d979f3a9.dir
+      size: 10659218
+      nfiles: 57
+    - path: gx/expectations/hidro_suite.json
+      hash: md5
+      md5: b24ab9d3402bb46e709b74d3288c2f27
+      size: 1870
+    - path: gx/expectations/weather_suite.json
+      hash: md5
+      md5: 3c5343e4b48447f9e98b46a08b6829b3
+      size: 2552
+    - path: gx/great_expectations.yml
+      hash: md5
+      md5: 21ab57530cd658bc98d6697881faec24
+      size: 23109
+    - path: gx/run_checkpoint.py
+      hash: md5
+      md5: 4964c3a6434d902d25e4515333183a99
+      size: 2003
+    outs:
+    - path: gx/uncommitted/data_docs
+      hash: md5
+      md5: cfa91930503844042434797617931b9f.dir
+      size: 29583568
+      nfiles: 451
+  test_data:
+    cmd: poetry run python src/data/test_data.py
+    deps:
+    - path: data/preprocessed/hidro
+      hash: md5
+      md5: d09d5c2e4355d9be1ae3aad6e739d333.dir
+      size: 19939034
+      nfiles: 147
+    - path: data/preprocessed/weather
+      hash: md5
+      md5: aedf693be370a18d5d9822a2d979f3a9.dir
+      size: 10659218
+      nfiles: 57
+    - path: src/data/test_data.py
+      hash: md5
+      md5: 8da7a5edacaec93bc1fb5c1e75722bf8
+      size: 2955
+    outs:
+    - path: data/reference/hidro
+      hash: md5
+      md5: 07b015c63a6fe1536fa8b56ce2d03db8.dir
+      size: 20042080
+      nfiles: 147
+    - path: data/reference/weather
+      hash: md5
+      md5: 69d1a61abdbb56654fe6384f1c117ac0.dir
+      size: 10609719
+      nfiles: 57
+    - path: reports/data_testing
+      hash: md5
+      md5: f35dbaf826782cab39db24fd09083898.dir
+      size: 847539208
+      nfiles: 205
+  train_hidro:
+    cmd: "poetry run python -m src.model.train_hidro_global\ngit commit -am \"Updated
+      hidro global model on `date` with DVC pipeline and GitHub workflows\" || true\n
+      git push || true\ndvc push || true\n"
+    deps:
+    - path: data/preprocessed/hidro
+      hash: md5
+      md5: d09d5c2e4355d9be1ae3aad6e739d333.dir
+      size: 19939034
+      nfiles: 147
+    - path: data/reference/hidro
+      hash: md5
+      md5: 07b015c63a6fe1536fa8b56ce2d03db8.dir
+      size: 20042080
+      nfiles: 147
+    - path: gx/uncommitted/data_docs
+      hash: md5
+      md5: cfa91930503844042434797617931b9f.dir
+      size: 29583568
+      nfiles: 451
+    - path: src/model/preprocess.py
+      hash: md5
+      md5: 0edfc4ef00adb1a786e7c118391b0328
+      size: 1748
+    - path: src/model/train_hidro_global.py
+      hash: md5
+      md5: 38c70a94a724d14e3e0229e949d1b0f5
+      size: 12478
+    params:
+      params.yaml:
+        train.batch_size: 32
+        train.epochs: 20
+        train.feature_cols:
+        - vodostaj
+        - pretok
+        - temp_vode
+        train.global_models_output_dir: models/hidro_global
+        train.hidro_input_dir: data/preprocessed/hidro
+        train.min_rows: 100
+        train.target_col: vodostaj
+        train.test_size: 48
+        train.window_size: 24
+    outs:
+    - path: models/hidro_global
+      hash: md5
+      md5: a17f594e853f15d569fc84967b026881.dir
+      size: 280118
+      nfiles: 2
+  train_risk_classifier:
+    cmd: "poetry run python -m src.model.train_risk_classifier\ngit commit -am \"
+      Updated risk classifier model on `date` with DVC pipeline and GitHub workflows\"\
+      \ || true\ngit push || true\ndvc push || true\n"
+    deps:
+    - path: data/preprocessed/hidro
+      hash: md5
+      md5: d09d5c2e4355d9be1ae3aad6e739d333.dir
+      size: 19939034
+      nfiles: 147
+    - path: data/preprocessed/weather
+      hash: md5
+      md5: aedf693be370a18d5d9822a2d979f3a9.dir
+      size: 10659218
+      nfiles: 57
+    - path: data/reference/hidro
+      hash: md5
+      md5: 07b015c63a6fe1536fa8b56ce2d03db8.dir
+      size: 20042080
+      nfiles: 147
+    - path: data/reference/weather
+      hash: md5
+      md5: 69d1a61abdbb56654fe6384f1c117ac0.dir
+      size: 10609719
+      nfiles: 57
+    - path: gx/uncommitted/data_docs
+      hash: md5
+      md5: cfa91930503844042434797617931b9f.dir
+      size: 29583568
+      nfiles: 451
+    - path: src/model/train_risk_classifier.py
+      hash: md5
+      md5: f961bd5d28b955841440552477ce2f1b
+      size: 16526
+    params:
+      params.yaml:
+        train.feature_cols:
+        - vodostaj
+        - pretok
+        - temp_vode
+        train.hidro_input_dir: data/preprocessed/hidro
+        train.min_rows: 100
+        train.risk_models_output_dir: models/risk
+        train.test_size: 48
+        train.weather_input_dir: data/preprocessed/weather
+    outs:
+    - path: models/risk
+      hash: md5
+      md5: 4ce7b3bf6a8d1b6e7bfdab48285430d7.dir
+      size: 22649542
+      nfiles: 3
+  export_onnx:
+    cmd: poetry run python -m src.model.export.export_onnx
+    deps:
+    - path: models/hidro_global/model_hidro_global.keras
+      hash: md5
+      md5: caa6fbae3a7d25a3a68a1d5a945d4efc
+      size: 278716
+    - path: models/risk/risk_classifier.keras
+      hash: md5
+      md5: 0deee6a2269af29e774eb0e543d54b42
+      size: 64594
+    - path: src/model/export/export_onnx.py
+      hash: md5
+      md5: 04dc422fe578476112b8786820271182
+      size: 1248
+    outs:
+    - path: models/onnx
+      hash: md5
+      md5: 2999a9c580ed5c4e06877e6632ca7a96.dir
+      size: 101353
+      nfiles: 2

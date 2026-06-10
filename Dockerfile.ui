@@ -10,6 +10,8 @@ RUN poetry install --no-interaction --no-root
 
 COPY . .
 
+RUN chmod +x start.sh
+
 EXPOSE 8501
 
-CMD ["streamlit", "run", "src/ui/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["bash", "start.sh"]

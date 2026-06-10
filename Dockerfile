@@ -5,13 +5,14 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock ./
 
 RUN pip install poetry
-
 RUN poetry config virtualenvs.create false
-
 RUN poetry install --no-interaction --no-root
 
 COPY . .
 
-EXPOSE 8000
+RUN chmod +x start.sh
 
-CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 8000
+EXPOSE 8501
+
+CMD ["bash", "start.sh"]
