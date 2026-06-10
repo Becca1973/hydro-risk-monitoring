@@ -50,8 +50,6 @@ jobs:
           dvc status
           dvc repro
           dvc push
-          git add dvc.lock
-          git commit -m "Update dvc.lock on `date` with GitHub Actions" || true
 
       - name: Push changes
         uses: ad-m/github-push-action@master

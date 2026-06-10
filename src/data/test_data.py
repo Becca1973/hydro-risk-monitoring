@@ -75,21 +75,20 @@ for config in CONFIGS:
         print(f"Generated report: {output_path}")
 
         # check test results
+        file_tests_passed = True
+
         result_dict = result.dict()
 
         if "tests" in result_dict:
             for test in result_dict["tests"]:
-                if (
-                    "status" in test
-                    and test["status"] != "SUCCESS"
-                ):
+                if "status" in test and test["status"] != "SUCCESS":
                     print(
-                        f"Test failed for {csv_path.name}: {test.get('name')}"
-                    )
+                        f"Test failed for {csv_path.name}: {test.get('name')}")
+                    file_tests_passed = False
                     all_tests_passed = False
 
         # update reference dataset if tests passed
-        if all_tests_passed:
+        if file_tests_passed:
             current_data.to_csv(reference_path, index=False)
 
 if not all_tests_passed:

@@ -2,7 +2,7 @@ stages:
   fetch_hidro:
     cmd: |
       poetry run python src/data/fetch_hidro_data.py
-      git commit -am "Updated raw hidro data on `date` with DVC pipeline and GitHub workflows" || exit 0
+      git commit -am "Updated raw hidro data on `date` with DVC pipeline and GitHub workflows" || true
       git push || true
       dvc push || true
     deps:
@@ -16,7 +16,7 @@ stages:
   preprocess_hidro:
     cmd: |
       poetry run python src/data/preprocess_hidro_data.py
-      git commit -am "Updated preprocessed hidro data on `date` with DVC pipeline and GitHub workflows" || exit 0
+      git commit -am "Updated preprocessed hidro data on `date` with DVC pipeline and GitHub workflows" || true
       git push || true
       dvc push || true
     deps:
@@ -86,19 +86,19 @@ stages:
 
   train_hidro:
     cmd: |
-      poetry run python -m src.model.train_hidro
-      git commit -am "Updated hidro models on `date` with DVC pipeline and GitHub workflows" || true
+      poetry run python -m src.model.train_hidro_global
+      git commit -am "Updated hidro global model on `date` with DVC pipeline and GitHub workflows" || true
       git push || true
       dvc push || true
     deps:
       - src/model/preprocess.py
-      - src/model/train_hidro.py
+      - src/model/train_hidro_global.py
       - data/preprocessed/hidro
       - gx/uncommitted/data_docs
       - data/reference/hidro
     params:
       - train.hidro_input_dir
-      - train.models_output_dir
+      - train.global_models_output_dir
       - train.target_col
       - train.feature_cols
       - train.window_size
@@ -107,7 +107,43 @@ stages:
       - train.batch_size
       - train.min_rows
     outs:
-      - models/hidro:
+      - models/hidro_global:
           persist: true
       - reports/modeling:
+          persist: true
+
+  train_risk_classifier:
+    cmd: |
+      poetry run python -m src.model.train_risk_classifier
+      git commit -am "Updated risk classifier model on `date` with DVC pipeline and GitHub workflows" || true
+      git push || true
+      dvc push || true
+    deps:
+      - src/model/train_risk_classifier.py
+      - data/preprocessed/hidro
+      - data/preprocessed/weather
+      - gx/uncommitted/data_docs
+      - data/reference/hidro
+      - data/reference/weather
+    params:
+      - train.hidro_input_dir
+      - train.weather_input_dir
+      - train.risk_models_output_dir
+      - train.feature_cols
+      - train.test_size
+      - train.min_rows
+    outs:
+      - models/risk:
+          persist: true
+      - reports/modeling:
+          persist: true
+
+  export_onnx:
+    cmd: poetry run python -m src.model.export.export_onnx
+    deps:
+      - src/model/export/export_onnx.py
+      - models/hidro_global/model_hidro_global.keras
+      - models/risk/risk_classifier.keras
+    outs:
+      - models/onnx:
           persist: true

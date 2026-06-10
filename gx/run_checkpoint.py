@@ -66,7 +66,6 @@ for config in VALIDATION_CONFIGS:
             all_success = False
 
 context.build_data_docs()
-context.open_data_docs()
 
 if all_success:
     print("\nValidation passed for all files!")
