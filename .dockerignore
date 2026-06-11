@@ -1,4 +1,3 @@
-.git
 .dvc/cache
 .vscode
 __pycache__
