@@ -4,7 +4,13 @@ set -e
 echo "Starting Hydro Risk service..."
 echo "Pulling DVC artifacts from remote storage..."
 
-poetry run dvc pull models reports data/preprocessed data/raw -v
+poetry run dvc pull \
+  models/hidro_global.dvc \
+  models/risk.dvc \
+  models/onnx.dvc \
+  preprocess_hidro \
+  preprocess_weather \
+  -v
 
 echo "DVC artifacts pulled successfully."
 
