@@ -7,7 +7,6 @@ data/*
 !data/metadata/
 !data/metadata/*.csv
 
-models
 mlruns
 mlflow.db
 

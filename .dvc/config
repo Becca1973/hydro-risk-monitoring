@@ -4,3 +4,6 @@
 ['remote "origin"']
     url = s3://dvc
     endpointurl = https://dagshub.com/Becca1973/hydro-risk-monitoring.s3
+['remote "clean"']
+    url = s3://dvc/clean
+    endpointurl = https://dagshub.com/Becca1973/hydro-risk-monitoring.s3
