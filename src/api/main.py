@@ -46,22 +46,56 @@ risk_mapping = None
 def load_models():
     global water_model, water_pipeline, risk_model, risk_preprocessing, risk_mapping
 
+    print("=== MODEL STARTUP CHECK ===")
+    print("WATER_MODEL_PATH:", WATER_MODEL_PATH,
+          "exists:", WATER_MODEL_PATH.exists())
+    print("WATER_PIPELINE_PATH:", WATER_PIPELINE_PATH,
+          "exists:", WATER_PIPELINE_PATH.exists())
+    print("RISK_MODEL_PATH:", RISK_MODEL_PATH,
+          "exists:", RISK_MODEL_PATH.exists())
+    print("RISK_PREPROCESSING_PATH:", RISK_PREPROCESSING_PATH,
+          "exists:", RISK_PREPROCESSING_PATH.exists())
+    print("RISK_MAPPING_PATH:", RISK_MAPPING_PATH,
+          "exists:", RISK_MAPPING_PATH.exists())
+
     if WATER_MODEL_PATH.exists():
-        water_model = tf.keras.models.load_model(WATER_MODEL_PATH)
+        try:
+            water_model = tf.keras.models.load_model(WATER_MODEL_PATH)
+            print("water model loaded")
+        except Exception as e:
+            print("water model error:", e)
 
     if WATER_PIPELINE_PATH.exists():
-        with open(WATER_PIPELINE_PATH, "rb") as f:
-            water_pipeline = pickle.load(f)
+        try:
+            with open(WATER_PIPELINE_PATH, "rb") as f:
+                water_pipeline = pickle.load(f)
+            print("water pipeline loaded")
+        except Exception as e:
+            print("water pipeline error:", e)
 
     if RISK_MODEL_PATH.exists():
-        risk_model = tf.keras.models.load_model(RISK_MODEL_PATH)
+        try:
+            risk_model = tf.keras.models.load_model(RISK_MODEL_PATH)
+            print("risk model loaded")
+        except Exception as e:
+            print("risk model error:", e)
 
     if RISK_PREPROCESSING_PATH.exists():
-        with open(RISK_PREPROCESSING_PATH, "rb") as f:
-            risk_preprocessing = pickle.load(f)
+        try:
+            with open(RISK_PREPROCESSING_PATH, "rb") as f:
+                risk_preprocessing = pickle.load(f)
+            print("risk preprocessing loaded")
+        except Exception as e:
+            print("risk preprocessing error:", e)
 
     if RISK_MAPPING_PATH.exists():
-        risk_mapping = pd.read_csv(RISK_MAPPING_PATH)
+        try:
+            risk_mapping = pd.read_csv(RISK_MAPPING_PATH)
+            print("risk mapping loaded")
+        except Exception as e:
+            print("risk mapping error:", e)
+
+    print("=== MODEL STARTUP CHECK END ===")
 
 
 @app.get("/")
