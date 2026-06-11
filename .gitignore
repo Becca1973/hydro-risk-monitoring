@@ -12,10 +12,16 @@ __pycache__/
 
 *.log
 
-/data/
+/data/**
+!/data/
+!/data/metadata/
+!/data/metadata/*.csv
 checkpoints/
 .vscode/
-
+/models/**
+!/models/
+!/models/*.dvc
+!/models/.gitignore
 reports/*
 !reports/
 !reports/modeling/
