@@ -1,4 +1,5 @@
 .dvc/cache
+
 .vscode
 __pycache__
 *.pyc
@@ -6,6 +7,12 @@ __pycache__
 data/preprocessed
 data/raw
 data/reference
+data/production
+
+models
+
+gx/uncommitted/data_docs
+reports/data_testing
 
 mlruns
 mlflow.db
