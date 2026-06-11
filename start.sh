@@ -1,14 +1,22 @@
 #!/bin/bash
 set -e
 
-echo "Pulling DVC artifacts..."
+echo "Starting Hydro Risk service..."
 
-poetry run dvc pull \
-  validate_data \
-  test_data \
-  prepare_production_data \
-  train_hidro \
-  train_risk_classifier -v
+if [ "$SERVICE_TYPE" != "ui" ]; then
+  echo "Pulling DVC artifacts for API service..."
+
+  poetry run dvc pull \
+    validate_data \
+    test_data \
+    prepare_production_data \
+    train_hidro \
+    train_risk_classifier -v
+
+  echo "DVC artifacts pulled."
+else
+  echo "UI service: skipping DVC pull."
+fi
 
 echo "Starting service..."
 
