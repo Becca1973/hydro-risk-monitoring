@@ -134,6 +134,19 @@ stages:
       - models/risk:
           persist: true
 
+  prepare_production_data:
+    cmd: poetry run python src/data/make_production_data.py
+    deps:
+      - src/data/make_production_data.py
+      - data/preprocessed/hidro
+      - data/preprocessed/weather
+      - reports/modeling/risk_classifier_used_station_mapping.csv
+    outs:
+      - data/production/hidro:
+          persist: true
+      - data/production/weather:
+          persist: true
+
   export_onnx:
     cmd: poetry run python -m src.model.export.export_onnx
     deps:

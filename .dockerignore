@@ -3,15 +3,12 @@
 __pycache__
 *.pyc
 
-data/*
-!data/metadata/
-!data/metadata/*.csv
+data/preprocessed
+data/raw
+data/reference
 
 mlruns
 mlflow.db
-
-gx/uncommitted
-reports/data_testing
 
 .env
 .venv

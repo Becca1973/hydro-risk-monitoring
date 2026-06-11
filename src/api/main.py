@@ -9,8 +9,8 @@ from fastapi import FastAPI, HTTPException
 app = FastAPI(title="Hydro Risk Monitoring API")
 STATIONS_PATH = Path("data/metadata/hidro_stations.csv")
 
-HIDRO_DIR = Path("data/preprocessed/hidro")
-WEATHER_DIR = Path("data/preprocessed/weather")
+HIDRO_DIR = Path("data/production/hidro")
+WEATHER_DIR = Path("data/production/weather")
 
 WATER_MODEL_PATH = Path("models/hidro_global/model_hidro_global.keras")
 WATER_PIPELINE_PATH = Path("models/hidro_global/pipeline_hidro_global.pkl")
