@@ -1,18 +1,10 @@
 #!/bin/bash
 set -e
 
-echo "Starting Hydro Risk service..."
-echo "Pulling DVC artifacts from remote storage..."
+echo "Pulling model artifacts..."
+poetry run dvc pull models/hidro_global.dvc models/risk.dvc -v
 
-poetry run dvc pull \
-  models/hidro_global.dvc \
-  models/risk.dvc \
-  models/onnx.dvc \
-  preprocess_hidro \
-  preprocess_weather \
-  -v
-
-echo "DVC artifacts pulled successfully."
+echo "Starting service..."
 
 if [ "$SERVICE_TYPE" = "ui" ]; then
   streamlit run src/ui/app.py --server.port=${PORT:-8501} --server.address=0.0.0.0
