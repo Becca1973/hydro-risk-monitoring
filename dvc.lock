@@ -514,3 +514,35 @@ stages:
       md5: 2999a9c580ed5c4e06877e6632ca7a96.dir
       size: 101353
       nfiles: 2
+  prepare_production_data:
+    cmd: poetry run python src/data/make_production_data.py
+    deps:
+    - path: data/preprocessed/hidro
+      hash: md5
+      md5: cd6a70e9634e96dcc2b91daeeac22072.dir
+      size: 20056531
+      nfiles: 147
+    - path: data/preprocessed/weather
+      hash: md5
+      md5: 02bd4a22c7dba0d942f5dd6189d529c7.dir
+      size: 10659218
+      nfiles: 57
+    - path: reports/modeling/risk_classifier_used_station_mapping.csv
+      hash: md5
+      md5: a7d315452bf7a291cad7a451a6936c8a
+      size: 2376
+    - path: src/data/make_production_data.py
+      hash: md5
+      md5: dffe0e18e0e01f0b1a231c9c04fc3c2d
+      size: 6149
+    outs:
+    - path: data/production/hidro
+      hash: md5
+      md5: ad270cc24949162685f876ce9df9f845.dir
+      size: 3081576
+      nfiles: 75
+    - path: data/production/weather
+      hash: md5
+      md5: 129204630eb9094a9912391d5ff4c770.dir
+      size: 1249058
+      nfiles: 26
