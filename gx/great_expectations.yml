@@ -582,7 +582,7 @@ fluent_datasources:
       hidro_9300_Podkastel:
         type: csv
         batching_regex: 9300_Podkastel.csv
-    base_directory: data\preprocessed\hidro
+    base_directory: data/preprocessed/hidro
   weather_fluent:
     type: pandas_filesystem
     assets:
@@ -760,4 +760,4 @@ fluent_datasources:
       weather_ZELENICA:
         type: csv
         batching_regex: ZELENICA.csv
-    base_directory: data\preprocessed\weather
+    base_directory: data/preprocessed/weather
