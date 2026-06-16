@@ -31,6 +31,9 @@ for config in VALIDATION_CONFIGS:
 
         asset_name = f"{config['name']}_{csv_path.stem}".replace("-", "_")
 
+        print(f"\n=== Processing: {csv_path.name} ===")
+        print(f"Asset name: {asset_name}")
+
         try:
             datasource.add_csv_asset(
                 name=asset_name,
@@ -57,13 +60,26 @@ for config in VALIDATION_CONFIGS:
             ],
         )
 
-        result = checkpoint.run(run_id=f"{asset_name}_run")
+        try:
+            result = checkpoint.run(
+                run_id=f"{asset_name}_run"
+            )
 
-        if result["success"]:
-            print(f"{csv_path.name} passed")
-        else:
-            print(f"{csv_path.name} failed")
-            all_success = False
+            if result["success"]:
+                print(f"{csv_path.name} passed")
+            else:
+                print(f"{csv_path.name} failed")
+                all_success = False
+
+        except Exception as e:
+            print("\n================ ERROR ================")
+            print(f"File: {csv_path}")
+            print(f"File name: {csv_path.name}")
+            print(f"Asset: {asset_name}")
+            print(f"Exception type: {type(e).__name__}")
+            print(f"Exception message: {e}")
+            print("=======================================\n")
+            raise
 
 context.build_data_docs()
 
