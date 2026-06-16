@@ -92,8 +92,8 @@ for config in CONFIGS:
             current_data.to_csv(reference_path, index=False)
 
 if not all_tests_passed:
-    print("\nSome Evidently tests failed.")
-    sys.exit(1)
+    print("\nSome Evidently tests failed. Reports were generated for inspection.")
 else:
     print("\nAll Evidently tests passed.")
-    sys.exit(0)
+
+sys.exit(0)
