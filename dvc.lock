@@ -2,7 +2,7 @@ schema: '2.0'
 stages:
   fetch_hidro:
     cmd: "poetry run python src/data/fetch_hidro_data.py\ngit commit -am \"Updated
-      raw hidro data on `date` with DVC pipeline and GitHub workflows\" || exit 0\n
+      raw hidro data on `date` with DVC pipeline and GitHub workflows\" || true\n\
       git push || true\ndvc push || true\n"
     deps:
     - path: src/data/fetch_hidro_data.py
@@ -11,12 +11,13 @@ stages:
       size: 946
     params:
       params.yaml:
-        fetch.hidro_url: https://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml
+        fetch.hidro_url: 
+          https://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml
     outs:
     - path: data/raw/hidro/hidro_data.xml
       hash: md5
-      md5: 555ee4732efe7a1e7e36267ed9d4bb07
-      size: 97604
+      md5: ed398838507791f34110e956d579f18d
+      size: 98427
   preprocess_hidro:
     cmd: "poetry run python src/data/preprocess_hidro_data.py\ngit commit -am \"Updated
       preprocessed hidro data on `date` with DVC pipeline and GitHub workflows\" ||
@@ -181,8 +182,8 @@ stages:
       nfiles: 147
   fetch_weather:
     cmd: "poetry run python src/data/fetch_weather_data.py\ngit commit -am \"Updated
-      raw weather data on `date` with DVC pipeline and GitHub workflows\" || true\n
-      git push || true\ndvc push || true\n"
+      raw weather data on `date` with DVC pipeline and GitHub workflows\" || true\n\
+      \ git push || true\ndvc push || true\n"
     deps:
     - path: src/data/fetch_weather_data.py
       hash: md5
@@ -396,8 +397,8 @@ stages:
       nfiles: 205
   train_hidro:
     cmd: "poetry run python -m src.model.train_hidro_global\ngit commit -am \"Updated
-      hidro global model on `date` with DVC pipeline and GitHub workflows\" || true\n
-      git push || true\ndvc push || true\n"
+      hidro global model on `date` with DVC pipeline and GitHub workflows\" || true\n\
+      \ git push || true\ndvc push || true\n"
     deps:
     - path: data/preprocessed/hidro
       hash: md5
@@ -443,8 +444,8 @@ stages:
       size: 280118
       nfiles: 2
   train_risk_classifier:
-    cmd: "poetry run python -m src.model.train_risk_classifier\ngit commit -am \"
-      Updated risk classifier model on `date` with DVC pipeline and GitHub workflows\"\
+    cmd: "poetry run python -m src.model.train_risk_classifier\ngit commit -am \"\
+      \ Updated risk classifier model on `date` with DVC pipeline and GitHub workflows\"\
       \ || true\ngit push || true\ndvc push || true\n"
     deps:
     - path: data/preprocessed/hidro
