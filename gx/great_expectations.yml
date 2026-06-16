@@ -582,6 +582,162 @@ fluent_datasources:
       hidro_9300_Podkastel:
         type: csv
         batching_regex: 9300_Podkastel.csv
+      hidro_1260_Čentiba:
+        type: csv
+        batching_regex: 1260_Čentiba.csv
+      hidro_1335_Središče:
+        type: csv
+        batching_regex: 1335_Središče.csv
+      hidro_1355_Hodoš:
+        type: csv
+        batching_regex: 1355_Hodoš.csv
+      hidro_2005_Črneče:
+        type: csv
+        batching_regex: 2005_Črneče.csv
+      hidro_2160_Zavrč:
+        type: csv
+        batching_regex: 2160_Zavrč.csv
+      hidro_2220_Črna:
+        type: csv
+        batching_regex: 2220_Črna.csv
+      hidro_2372_Dovže:
+        type: csv
+        batching_regex: 2372_Dovže.csv
+      hidro_2600_Zreče:
+        type: csv
+        batching_regex: 2600_Zreče.csv
+      hidro_2620_Loče:
+        type: csv
+        batching_regex: 2620_Loče.csv
+      hidro_2754_Tržec:
+        type: csv
+        batching_regex: 2754_Tržec.csv
+      hidro_2880_Gočova:
+        type: csv
+        batching_regex: 2880_Gočova.csv
+      hidro_2900_Zamušani:
+        type: csv
+        batching_regex: 2900_Zamušani.csv
+      hidro_3250_Bodešče:
+        type: csv
+        batching_regex: 3250_Bodešče.csv
+      hidro_3570_Šentjakob:
+        type: csv
+        batching_regex: 3570_Šentjakob.csv
+      hidro_3850_Čatež:
+        type: csv
+        batching_regex: 3850_Čatež.csv
+      hidro_4025_Ovsiše:
+        type: csv
+        batching_regex: 4025_Ovsiše.csv
+      hidro_4222_Žiri:
+        type: csv
+        batching_regex: 4222_Žiri.csv
+      hidro_4270_Železniki:
+        type: csv
+        batching_regex: 4270_Železniki.csv
+      hidro_4298_Vešter:
+        type: csv
+        batching_regex: 4298_Vešter.csv
+      hidro_4445_Bišče:
+        type: csv
+        batching_regex: 4445_Bišče.csv
+      hidro_4520_Podrečje:
+        type: csv
+        batching_regex: 4520_Podrečje.csv
+      hidro_4650_Žebnik:
+        type: csv
+        batching_regex: 4650_Žebnik.csv
+      hidro_6020_Solčava:
+        type: csv
+        batching_regex: 6020_Solčava.csv
+      hidro_6068_Letuš:
+        type: csv
+        batching_regex: 6068_Letuš.csv
+      hidro_6200_Laško:
+        type: csv
+        batching_regex: 6200_Laško.csv
+      hidro_6220_Luče:
+        type: csv
+        batching_regex: 6220_Luče.csv
+      hidro_6240_Kraše:
+        type: csv
+        batching_regex: 6240_Kraše.csv
+      hidro_6300_Šoštanj:
+        type: csv
+        batching_regex: 6300_Šoštanj.csv
+      hidro_6340_Rečica:
+        type: csv
+        batching_regex: 6340_Rečica.csv
+      hidro_6691_Črnolica:
+        type: csv
+        batching_regex: 6691_Črnolica.csv
+      hidro_6770_Polže:
+        type: csv
+        batching_regex: 6770_Polže.csv
+      hidro_6835_Vodiško:
+        type: csv
+        batching_regex: 6835_Vodiško.csv
+      hidro_7160_Podbočje:
+        type: csv
+        batching_regex: 7160_Podbočje.csv
+      hidro_7200_Mlačevo:
+        type: csv
+        batching_regex: 7200_Mlačevo.csv
+      hidro_7220_Rašica:
+        type: csv
+        batching_regex: 7220_Rašica.csv
+      hidro_7230_Gradiček:
+        type: csv
+        batching_regex: 7230_Gradiček.csv
+      hidro_7245_Fužina:
+        type: csv
+        batching_regex: 7245_Fužina.csv
+      hidro_7340_Prečna:
+        type: csv
+        batching_regex: 7340_Prečna.csv
+      hidro_7350_Stopiče:
+        type: csv
+        batching_regex: 7350_Stopiče.csv
+      hidro_7380_Škocjan:
+        type: csv
+        batching_regex: 7380_Škocjan.csv
+      hidro_7440_Sodražica:
+        type: csv
+        batching_regex: 7440_Sodražica.csv
+      hidro_8031_Kršovec:
+        type: csv
+        batching_regex: 8031_Kršovec.csv
+      hidro_8270_Žaga:
+        type: csv
+        batching_regex: 8270_Žaga.csv
+      hidro_8450_Hotešk:
+        type: csv
+        batching_regex: 8450_Hotešk.csv
+      hidro_8591_Zalošče:
+        type: csv
+        batching_regex: 8591_Zalošče.csv
+      hidro_8630_Ajdovščina:
+        type: csv
+        batching_regex: 8630_Ajdovščina.csv
+      hidro_9015_Trpčane:
+        type: csv
+        batching_regex: 9015_Trpčane.csv
+      hidro_9077_Škocjan:
+        type: csv
+        batching_regex: 9077_Škocjan.csv
+      hidro_9108_Zarečica:
+        type: csv
+        batching_regex: 9108_Zarečica.csv
+      hidro_9275_Šalara:
+        type: csv
+        batching_regex: 9275_Šalara.csv
+      hidro_9280_Pišine:
+        type: csv
+        batching_regex: 9280_Pišine.csv
+      hidro_9300_Podkaštel:
+        type: csv
+        batching_regex: 9300_Podkaštel.csv
     base_directory: data/preprocessed/hidro
   weather_fluent:
     type: pandas_filesystem
@@ -760,4 +916,34 @@ fluent_datasources:
       weather_ZELENICA:
         type: csv
         batching_regex: ZELENICA.csv
+      weather_BLEGOŠ:
+        type: csv
+        batching_regex: BLEGOŠ.csv
+      weather_DAVČA:
+        type: csv
+        batching_regex: DAVČA.csv
+      weather_GAČNIK:
+        type: csv
+        batching_regex: GAČNIK.csv
+      weather_GORIČKO:
+        type: csv
+        batching_regex: GORIČKO.csv
+      weather_KOČEVJE:
+        type: csv
+        batching_regex: KOČEVJE.csv
+      weather_Krško:
+        type: csv
+        batching_regex: Krško.csv
+      weather_MEŽICA:
+        type: csv
+        batching_regex: MEŽICA.csv
+      weather_SVIŠČAKI:
+        type: csv
+        batching_regex: SVIŠČAKI.csv
+      weather_VRŠIČ:
+        type: csv
+        batching_regex: VRŠIČ.csv
+      weather_ŠKOCJAN:
+        type: csv
+        batching_regex: ŠKOCJAN.csv
     base_directory: data/preprocessed/weather

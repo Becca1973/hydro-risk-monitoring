@@ -1,23 +1,19 @@
 station,reason
 2150_Borl,empty feature columns: ['pretok']
-2220_Crna,empty feature columns: ['pretok']
-2372_Dovze,empty feature columns: ['pretok']
 3350_Mlino,empty feature columns: ['pretok']
 3370_Mlino,"empty feature columns: ['pretok', 'temp_vode']"
 4095_Lajb,"empty feature columns: ['vodostaj', 'pretok', 'temp_vode']"
-4200_Suha,empty feature columns: ['pretok']
-4445_Bisce,empty feature columns: ['pretok']
+4445_Bišče,empty feature columns: ['pretok']
 4986_Dolenjce,"empty feature columns: ['vodostaj', 'pretok', 'temp_vode']"
 5040_Kamin,empty feature columns: ['pretok']
 6120_Medlog,empty feature columns: ['pretok']
-7230_Gradicek,"empty feature columns: ['vodostaj', 'pretok', 'temp_vode']"
-7245_Fuzina,"empty feature columns: ['vodostaj', 'pretok', 'temp_vode']"
-7350_Stopice,"empty feature columns: ['vodostaj', 'pretok', 'temp_vode']"
+7230_Gradiček,"empty feature columns: ['vodostaj', 'pretok', 'temp_vode']"
+7245_Fužina,"empty feature columns: ['vodostaj', 'pretok', 'temp_vode']"
+7350_Stopiče,"empty feature columns: ['vodostaj', 'pretok', 'temp_vode']"
 7498_Blate,empty feature columns: ['pretok']
-8270_Zaga,empty feature columns: ['temp_vode']
+8270_Žaga,empty feature columns: ['temp_vode']
 8453_Podroteja,"empty feature columns: ['vodostaj', 'pretok', 'temp_vode']"
 8640_Branik,empty feature columns: ['pretok']
 8700_Neblo,empty feature columns: ['pretok']
-9015_Trpcane,empty feature columns: ['temp_vode']
-9077_Skocjan,not enough rows
+9077_Škocjan,not enough rows
 9240_Dekani,empty feature columns: ['pretok']

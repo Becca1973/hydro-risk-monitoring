@@ -205,8 +205,8 @@ stages:
     deps:
     - path: data/raw/weather/weather_data.xml
       hash: md5
-      md5: 830b7ecad4fd2c774a4bfc702277ad09
-      size: 793318
+      md5: 878e571252d6b45fd148197d4da5eddd
+      size: 784025
     - path: src/data/preprocess_weather_data.py
       hash: md5
       md5: b02a4b19fbbf9f61747746248991ec4d
@@ -324,21 +324,21 @@ stages:
     outs:
     - path: data/preprocessed/weather
       hash: md5
-      md5: 02bd4a22c7dba0d942f5dd6189d529c7.dir
-      size: 10659218
+      md5: d24ee523ae7b958a21bc14250f7c6632.dir
+      size: 10663852
       nfiles: 57
   validate_data:
     cmd: poetry run python gx/run_checkpoint.py
     deps:
     - path: data/preprocessed/hidro
       hash: md5
-      md5: d09d5c2e4355d9be1ae3aad6e739d333.dir
-      size: 19939034
+      md5: ad4129d465fa1ceb8ebd08f72fffae88.dir
+      size: 19957536
       nfiles: 147
     - path: data/preprocessed/weather
       hash: md5
-      md5: aedf693be370a18d5d9822a2d979f3a9.dir
-      size: 10659218
+      md5: d24ee523ae7b958a21bc14250f7c6632.dir
+      size: 10663852
       nfiles: 57
     - path: gx/expectations/hidro_suite.json
       hash: md5
@@ -350,50 +350,50 @@ stages:
       size: 2552
     - path: gx/great_expectations.yml
       hash: md5
-      md5: 21ab57530cd658bc98d6697881faec24
-      size: 23109
+      md5: 9c3f0e4673094fcf812bcaeabe4cbd90
+      size: 27602
     - path: gx/run_checkpoint.py
       hash: md5
-      md5: 4964c3a6434d902d25e4515333183a99
-      size: 2003
+      md5: 7e2058a0bfcf8cf0b933f73e9123a150
+      size: 2501
     outs:
     - path: gx/uncommitted/data_docs
       hash: md5
-      md5: cfa91930503844042434797617931b9f.dir
-      size: 29583568
-      nfiles: 451
+      md5: ab32696fe706360c5f2c0dcc7ad71e61.dir
+      size: 16162353
+      nfiles: 227
   test_data:
     cmd: poetry run python src/data/test_data.py
     deps:
     - path: data/preprocessed/hidro
       hash: md5
-      md5: d09d5c2e4355d9be1ae3aad6e739d333.dir
-      size: 19939034
+      md5: ad4129d465fa1ceb8ebd08f72fffae88.dir
+      size: 19957536
       nfiles: 147
     - path: data/preprocessed/weather
       hash: md5
-      md5: aedf693be370a18d5d9822a2d979f3a9.dir
-      size: 10659218
+      md5: d24ee523ae7b958a21bc14250f7c6632.dir
+      size: 10663852
       nfiles: 57
     - path: src/data/test_data.py
       hash: md5
-      md5: 8da7a5edacaec93bc1fb5c1e75722bf8
-      size: 2955
+      md5: 14c20a5cf32a664877d99d11f81f75ee
+      size: 2876
     outs:
     - path: data/reference/hidro
       hash: md5
-      md5: 07b015c63a6fe1536fa8b56ce2d03db8.dir
-      size: 20042080
-      nfiles: 147
+      md5: 1aa553f45db2d5d84a62b26108c8e06d.dir
+      size: 26957358
+      nfiles: 199
     - path: data/reference/weather
       hash: md5
-      md5: 69d1a61abdbb56654fe6384f1c117ac0.dir
-      size: 10609719
-      nfiles: 57
+      md5: a8996ced9a02c655ac64f2bf46a29c52.dir
+      size: 12179463
+      nfiles: 67
     - path: reports/data_testing
       hash: md5
-      md5: f35dbaf826782cab39db24fd09083898.dir
-      size: 847539208
+      md5: 7dde14c0cef48163ad1db5b16c8fa737.dir
+      size: 847449060
       nfiles: 205
   train_hidro:
     cmd: "poetry run python -m src.model.train_hidro_global\ngit commit -am \"Updated
