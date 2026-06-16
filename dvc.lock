@@ -21,12 +21,12 @@ stages:
   preprocess_hidro:
     cmd: "poetry run python src/data/preprocess_hidro_data.py\ngit commit -am \"Updated
       preprocessed hidro data on `date` with DVC pipeline and GitHub workflows\" ||
-      exit 0\ngit push || true\ndvc push || true\n"
+      true\ngit push || true\ndvc push || true\n"
     deps:
     - path: data/raw/hidro/hidro_data.xml
       hash: md5
-      md5: 555ee4732efe7a1e7e36267ed9d4bb07
-      size: 97604
+      md5: ed398838507791f34110e956d579f18d
+      size: 98427
     - path: src/data/preprocess_hidro_data.py
       hash: md5
       md5: 6a2c339aff336a4c5dbc703254ea4599
@@ -177,8 +177,8 @@ stages:
     outs:
     - path: data/preprocessed/hidro
       hash: md5
-      md5: 7f9c43c7e6d0167d59f225ec25271657.dir
-      size: 19939034
+      md5: ad4129d465fa1ceb8ebd08f72fffae88.dir
+      size: 19957536
       nfiles: 147
   fetch_weather:
     cmd: "poetry run python src/data/fetch_weather_data.py\ngit commit -am \"Updated
