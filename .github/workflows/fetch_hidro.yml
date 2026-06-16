@@ -28,7 +28,7 @@ jobs:
           cache: poetry
 
       - name: Install DVC
-        run: pip install "dvc[all]==3.60.1"
+        run: pip install "dvc[all]==3.60.1" "pathspec<0.12"
 
       - name: Setup Git
         run: |
