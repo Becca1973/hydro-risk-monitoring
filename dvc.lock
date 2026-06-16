@@ -398,31 +398,31 @@ stages:
   train_hidro:
     cmd: "poetry run python -m src.model.train_hidro_global\ngit commit -am \"Updated
       hidro global model on `date` with DVC pipeline and GitHub workflows\" || true\n\
-      \ git push || true\ndvc push || true\n"
+      git push || true\ndvc push || true\n"
     deps:
     - path: data/preprocessed/hidro
       hash: md5
-      md5: d09d5c2e4355d9be1ae3aad6e739d333.dir
-      size: 19939034
+      md5: ad4129d465fa1ceb8ebd08f72fffae88.dir
+      size: 19957536
       nfiles: 147
     - path: data/reference/hidro
       hash: md5
-      md5: 07b015c63a6fe1536fa8b56ce2d03db8.dir
-      size: 20042080
-      nfiles: 147
+      md5: 1aa553f45db2d5d84a62b26108c8e06d.dir
+      size: 26957358
+      nfiles: 199
     - path: gx/uncommitted/data_docs
       hash: md5
-      md5: cfa91930503844042434797617931b9f.dir
-      size: 29583568
-      nfiles: 451
+      md5: ab32696fe706360c5f2c0dcc7ad71e61.dir
+      size: 16162353
+      nfiles: 227
     - path: src/model/preprocess.py
       hash: md5
-      md5: 0edfc4ef00adb1a786e7c118391b0328
-      size: 1748
+      md5: 5b17a9a06a69366507b8ad87ce176ee3
+      size: 1684
     - path: src/model/train_hidro_global.py
       hash: md5
-      md5: 38c70a94a724d14e3e0229e949d1b0f5
-      size: 12478
+      md5: f8c74b414135a36c12a5b38122f7bf6b
+      size: 12102
     params:
       params.yaml:
         train.batch_size: 32
@@ -440,8 +440,8 @@ stages:
     outs:
     - path: models/hidro_global
       hash: md5
-      md5: a17f594e853f15d569fc84967b026881.dir
-      size: 280118
+      md5: fa6162e928ab509d7d88494dea01f1f6.dir
+      size: 280132
       nfiles: 2
   train_risk_classifier:
     cmd: "poetry run python -m src.model.train_risk_classifier\ngit commit -am \"\

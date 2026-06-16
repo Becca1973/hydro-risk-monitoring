@@ -1,2 +1,2 @@
 model,status,model_type,accuracy,f1_macro,num_rows,num_stations,test_size,model_path,preprocessing_path
-hidro_risk_classifier,trained,dense_neural_network_classifier,0.6296091445427728,0.2875663213750257,177856,113,5424,models\risk\risk_classifier.keras,models\risk\risk_classifier_preprocessing.pkl
+hidro_risk_classifier,trained,dense_neural_network_classifier,0.8851425438596491,0.3717786428150127,119404,76,3648,models/risk/risk_classifier.keras,models/risk/risk_classifier_preprocessing.pkl
