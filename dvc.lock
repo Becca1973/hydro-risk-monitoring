@@ -205,8 +205,8 @@ stages:
     deps:
     - path: data/raw/weather/weather_data.xml
       hash: md5
-      md5: 878e571252d6b45fd148197d4da5eddd
-      size: 784025
+      md5: 5f84808970e1f51a29a7b84e3379879a
+      size: 785030
     - path: src/data/preprocess_weather_data.py
       hash: md5
       md5: b02a4b19fbbf9f61747746248991ec4d
@@ -324,8 +324,8 @@ stages:
     outs:
     - path: data/preprocessed/weather
       hash: md5
-      md5: d24ee523ae7b958a21bc14250f7c6632.dir
-      size: 10663852
+      md5: 6c8f7dd59723bdea25f906e2aa851a76.dir
+      size: 10668214
       nfiles: 57
   validate_data:
     cmd: poetry run python gx/run_checkpoint.py
@@ -337,8 +337,8 @@ stages:
       nfiles: 147
     - path: data/preprocessed/weather
       hash: md5
-      md5: d24ee523ae7b958a21bc14250f7c6632.dir
-      size: 10663852
+      md5: 6c8f7dd59723bdea25f906e2aa851a76.dir
+      size: 10668214
       nfiles: 57
     - path: gx/expectations/hidro_suite.json
       hash: md5
@@ -359,8 +359,8 @@ stages:
     outs:
     - path: gx/uncommitted/data_docs
       hash: md5
-      md5: ab32696fe706360c5f2c0dcc7ad71e61.dir
-      size: 16162353
+      md5: 31dae976c108ee1ba4d308da9bbec199.dir
+      size: 16162343
       nfiles: 227
   test_data:
     cmd: poetry run python src/data/test_data.py
@@ -372,29 +372,29 @@ stages:
       nfiles: 147
     - path: data/preprocessed/weather
       hash: md5
-      md5: d24ee523ae7b958a21bc14250f7c6632.dir
-      size: 10663852
+      md5: 6c8f7dd59723bdea25f906e2aa851a76.dir
+      size: 10668214
       nfiles: 57
     - path: src/data/test_data.py
       hash: md5
-      md5: 14c20a5cf32a664877d99d11f81f75ee
-      size: 2876
+      md5: bb57f21c4d5c29617d172faa025c2bc7
+      size: 3774
     outs:
     - path: data/reference/hidro
       hash: md5
-      md5: 1aa553f45db2d5d84a62b26108c8e06d.dir
-      size: 26957358
+      md5: 0cee025f7622401ea459d8468ea113d1.dir
+      size: 26916283
       nfiles: 199
     - path: data/reference/weather
       hash: md5
-      md5: a8996ced9a02c655ac64f2bf46a29c52.dir
-      size: 12179463
+      md5: 0c1387bf4078c8872ca24f2b39700c80.dir
+      size: 12154795
       nfiles: 67
     - path: reports/data_testing
       hash: md5
-      md5: 7dde14c0cef48163ad1db5b16c8fa737.dir
-      size: 847449060
-      nfiles: 205
+      md5: 45ed39b94cd6f96bed7d38acf263da25.dir
+      size: 1095676029
+      nfiles: 265
   train_hidro:
     cmd: "poetry run python -m src.model.train_hidro_global\ngit commit -am \"Updated
       hidro global model on `date` with DVC pipeline and GitHub workflows\" || true\n\
